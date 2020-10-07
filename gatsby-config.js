@@ -3,6 +3,32 @@ module.exports = {
     title: `Hackademics website`,
     description: `Homepage for the Sheridan Hackademics club`,
     author: `@TimmyRB`,
+    menuLinks: [
+      {
+        name: "About",
+        slug: "/about",
+      },
+      {
+        name: "Team",
+        slug: "/team",
+      },
+      {
+        name: "Sponsorship",
+        slug: "/sponsor",
+      },
+      {
+        name: "Podcast",
+        slug: "/podcast",
+      },
+      {
+        name: "Hackville",
+        slug: "https://hackville.io",
+      },
+      {
+        name: "Contact",
+        slug: "/contact",
+      },
+    ]
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -15,6 +41,12 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/data/`,
+      },
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -34,14 +66,15 @@ module.exports = {
         path: `${__dirname}/src/markdown`,
       },
     },
+    `gatsby-transformer-remark`,
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: `gatsby-plugin-google-fonts`,
       options: {
-        path: `${__dirname}/src/markdown`,
-        name: `markdown`,
+        fonts: [
+          `open sans\:300,300i,400,400i,600,600i,700,700i,800,800i`,
+        ],
       },
     },
-    `gatsby-transformer-remark`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
