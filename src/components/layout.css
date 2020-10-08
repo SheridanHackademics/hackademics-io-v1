@@ -1,7 +1,4 @@
-body {
-    background-repeat: no-repeat;
-    background-position: top right;
-    margin: 0 auto;
-    padding: 0 10%;
-    max-width: 85.3125rem;
-  }
+* {
+  margin: 0 0;
+  padding: 0;
+}
