@@ -16,7 +16,7 @@ const NavItem = styled(Link)`
     color: #ddd;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1100px) {
     color: #111;
     padding: 20px 0;
     font-size: 1.5rem;

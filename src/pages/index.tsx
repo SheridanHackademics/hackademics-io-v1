@@ -17,12 +17,15 @@ const IndexPage = () => {
       }
     }
   `)
-  
+
   return (
     <Layout>
-      <Navbar siteTitle={data.site.siteMetadata.title} menuLinks={data.site.siteMetadata.menuLinks}/>
+      <Navbar
+        siteTitle={data.site.siteMetadata.title}
+        menuLinks={data.site.siteMetadata.menuLinks}
+      />
     </Layout>
-  );
+  )
 }
 
 export default IndexPage

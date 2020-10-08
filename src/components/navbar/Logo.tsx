@@ -6,17 +6,23 @@ import { Link, useStaticQuery, graphql } from "gatsby"
 const LogoWrap = styled.div`
   margin: auto 0;
   flex: 0 1 36px;
+  min-width: 205px;
+  margin-top: -4px;
 
-  @media (max-width: 768px) and (orientation: landscape) {
+  @media (max-width: 1100px) and (orientation: landscape) {
     flex: 0 1 25px;
+  }
+
+  @media (max-width: 1100px) {
+    margin-top: 7px;
   }
 `
 const Logo = () => {
   const data = useStaticQuery(graphql`
     query {
-      file(name: { eq: "gatsby-icon" }, extension: { eq: "png" }) {
+      file(name: { eq: "hackademics-logo-tmp" }, extension: { eq: "png" }) {
         childImageSharp {
-          fluid(maxWidth: 50, pngQuality: 80) {
+          fluid(pngQuality: 100) {
             ...GatsbyImageSharpFluid
           }
         }

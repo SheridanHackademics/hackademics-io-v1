@@ -4,20 +4,21 @@ import styled from "styled-components"
 import Logo from "./Logo"
 
 const Navigation = styled.nav`
-  background-color: transparent;
   position: relative;
+  background-color: transparent;
   text-transform: uppercase;
   z-index: 2;
   align-self: center;
   border: none;
   height: 2.5rem;
-  margin-top: 3.125rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  @media (max-width: 768px) {
-    margin-top: 1rem;
+  padding: 70px;
+
+  @media (max-width: 1100px) {
+    padding: 25px;
     top: 0;
     left: 0;
     right: 0;
@@ -30,7 +31,7 @@ const Toggle = styled.div`
   height: 100%;
   cursor: pointer;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1100px) {
     display: flex;
   }
 `
@@ -41,7 +42,7 @@ const Navbox = styled.div`
   justify-content: flex-end;
   align-items: left;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1100px) {
     flex-direction: column;
     position: fixed;
     width: 100%;
@@ -49,7 +50,7 @@ const Navbox = styled.div`
     padding-top: 1rem;
     background-color: #f7f7ff;
     transition: all 0.3s ease-in;
-    top: 4.5rem;
+    top: 5.5rem;
     left: ${props => (props.open ? "-100%" : "0")};
   }
 `
