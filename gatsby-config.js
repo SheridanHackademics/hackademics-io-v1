@@ -1,32 +1,37 @@
 module.exports = {
   siteMetadata: {
-    title: `Hackademics website`,
+    title: `Hackademics`,
     description: `Homepage for the Sheridan Hackademics club`,
-    author: `@TimmyRB`,
     menuLinks: [
       {
         name: "About",
         slug: "/about",
+        footer: true,
       },
       {
         name: "Team",
         slug: "/team",
+        footer: true,
       },
       {
         name: "Sponsorship",
         slug: "/sponsor",
+        footer: true,
       },
       {
         name: "Podcast",
         slug: "/podcast",
+        footer: false,
       },
       {
         name: "Hackville",
         slug: "https://hackville.io",
+        footer: false,
       },
       {
         name: "Contact",
         slug: "/contact",
+        footer: true,
       },
     ]
   },
