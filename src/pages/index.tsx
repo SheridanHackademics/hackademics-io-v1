@@ -1,7 +1,9 @@
 import { graphql, useStaticQuery } from "gatsby"
 import React from "react"
+import Footer from "../components/footer/Footer"
 import Layout from "../components/layout"
 import Navbar from "../components/navbar/Navbar"
+import SEO from "../components/seo"
 
 const IndexPage = () => {
   const data = useStaticQuery(graphql`
@@ -20,10 +22,12 @@ const IndexPage = () => {
 
   return (
     <Layout>
+      <SEO title='Home' />
       <Navbar
         siteTitle={data.site.siteMetadata.title}
         menuLinks={data.site.siteMetadata.menuLinks}
       />
+      <Footer/>
     </Layout>
   )
 }

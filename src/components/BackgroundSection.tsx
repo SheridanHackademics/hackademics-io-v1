@@ -4,16 +4,12 @@ import styled from 'styled-components'
 
 import BackgroundImage from 'gatsby-background-image'
 
-const StyledBackground = styled(BackgroundImage)`
+const StyledBackgroundImage = styled(BackgroundImage)`
   width: 100%;
   height: 100vh;
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-
-  @media (max-width: 1100px) {
-      height: 75vh;
-  }
 `
 
 const BackgroundSection = ({ children }) => (
@@ -22,7 +18,7 @@ const BackgroundSection = ({ children }) => (
       query {
         file(name: { eq: "hackville-bg" }, extension: { eq: "png" }) {
           childImageSharp {
-            fluid(quality: 100, maxWidth: 1920) {
+            fluid(quality: 100) {
               ...GatsbyImageSharpFluid_withWebp
             }
           }
@@ -33,13 +29,13 @@ const BackgroundSection = ({ children }) => (
       // Set ImageData.
       const imageData = data.file.childImageSharp.fluid
       return (
-        <StyledBackground
+        <StyledBackgroundImage
           Tag="section"
           fluid={imageData}
           backgroundColor={`#fff`}
         >
             {children}
-        </StyledBackground>
+        </StyledBackgroundImage>
       )
     }}
   />

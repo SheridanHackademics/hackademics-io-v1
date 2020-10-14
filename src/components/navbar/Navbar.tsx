@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import NavbarLinks from "./NavbarLinks"
 import styled from "styled-components"
-import Logo from "./Logo"
+import NavbarLogo from "./NavbarLogo"
 
 const Navigation = styled.nav`
   position: relative;
@@ -93,7 +93,7 @@ const Navbar = ({ siteTitle, menuLinks }) => {
 
   return (
     <Navigation>
-      <Logo />
+      <NavbarLogo />
       <Toggle
         navbarOpen={navbarOpen}
         onClick={() => setNavbarOpen(!navbarOpen)}

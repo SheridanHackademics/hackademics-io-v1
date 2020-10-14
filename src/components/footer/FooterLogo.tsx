@@ -7,20 +7,15 @@ const LogoWrap = styled.div`
   margin: auto 0;
   flex: 0 1 36px;
   min-width: 205px;
-  margin-top: -4px;
 
   @media (max-width: 1100px) and (orientation: landscape) {
     flex: 0 1 25px;
   }
-
-  @media (max-width: 1100px) {
-    margin-top: 7px;
-  }
 `
-const Logo = () => {
+const FooterLogo = () => {
   const data = useStaticQuery(graphql`
     query {
-      file(name: { eq: "hackademics-logo-tmp" }, extension: { eq: "png" }) {
+      file(name: { eq: "hackademics-logo-tmpW" }, extension: { eq: "png" }) {
         childImageSharp {
           fluid(pngQuality: 100) {
             ...GatsbyImageSharpFluid
@@ -37,4 +32,4 @@ const Logo = () => {
   )
 }
 
-export default Logo
+export default FooterLogo

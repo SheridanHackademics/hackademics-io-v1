@@ -28,7 +28,7 @@ const NavbarLinks = ({ menuLinks }) => {
   return (
     <>
       {menuLinks.map((link: { name: string; slug: string }) => (
-        <NavItem to={link.slug}>{link.name}</NavItem>
+        <NavItem key={link.name} to={link.slug}>{link.name}</NavItem>
       ))}
     </>
   )
