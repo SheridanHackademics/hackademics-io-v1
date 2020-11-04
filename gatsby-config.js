@@ -1,3 +1,7 @@
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`
+})
+
 module.exports = {
   siteMetadata: {
     title: `Hackademics`,
@@ -51,7 +55,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-typescript`,
       options: {
-        isTSX: true, // defaults to false
+        isTSX: false, // defaults to false
         jsxPragma: `React`, // defaults to "React"
         allExtensions: false, // defaults to false
       },
