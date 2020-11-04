@@ -1,7 +1,7 @@
 import { graphql, useStaticQuery } from "gatsby"
 import React from "react"
 import Footer from "../components/footer/Footer"
-import Layout from "../components/layout"
+import { DefaultLayout } from "../components/layouts"
 import Navbar from "../components/navbar/Navbar"
 import SEO from "../components/seo"
 
@@ -21,14 +21,14 @@ const IndexPage = () => {
   `)
 
   return (
-    <Layout>
-      <SEO title='Home' />
+    <DefaultLayout>
+      <SEO title="Home" />
       <Navbar
         siteTitle={data.site.siteMetadata.title}
         menuLinks={data.site.siteMetadata.menuLinks}
       />
-      <Footer/>
-    </Layout>
+      <Footer menuLinks={data.site.siteMetadata.menuLinks} />
+    </DefaultLayout>
   )
 }
 
