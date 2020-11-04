@@ -36,7 +36,26 @@ module.exports = {
     ]
   },
   plugins: [
+    `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
+    `gatsby-transformer-remark`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: `lit3mu9wj9wq`,
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
+      }
+    },
+    {
+      resolve: `gatsby-plugin-typescript`,
+      options: {
+        isTSX: true, // defaults to false
+        jsxPragma: `React`, // defaults to "React"
+        allExtensions: false, // defaults to false
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -44,19 +63,11 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/src/data/`,
-      },
-    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `Hackademics Website`,
+        short_name: `hackademics.io`,
         start_url: `/`,
         background_color: `#663399`,
         theme_color: `#663399`,
@@ -65,13 +76,9 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `markdown`,
-        path: `${__dirname}/src/markdown`,
-      },
+      resolve: `gatsby-plugin-styled-components`,
+      options: {},
     },
-    `gatsby-transformer-remark`,
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
@@ -80,8 +87,5 @@ module.exports = {
         ],
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
   ],
 }
