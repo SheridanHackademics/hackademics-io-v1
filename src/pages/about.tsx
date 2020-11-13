@@ -7,6 +7,7 @@ import Img, { FluidObject } from "gatsby-image"
 import Hero from "../components/hero";
 import Container from "../components/container";
 import styled from "styled-components";
+import { PrimaryColor } from "../themes/theme";
 // import Section from "../components/section";
 
 interface IChildImageSharp {
@@ -47,6 +48,7 @@ interface IAboutPage {
 
 interface IAboutSection {
     title: string,
+    titleColor: PrimaryColor,
     description: string,
     index: number,
     image?: {
@@ -65,8 +67,9 @@ const Section = styled.section<{ direction: boolean }>`
     flex-direction: ${props => props.direction ? "row" : "row-reverse"};
 `;
 
-const SectionHeader = styled.h1` 
+const SectionHeader = styled.h1<{ color: PrimaryColor }>` 
     font-family: "Open Sans", sans-serif;
+    color: ${props => props.theme.palette.primary[props.color]};
     letter-spacing: 5.5px;
     text-transform: uppercase;
     font-size: 55px;
@@ -92,7 +95,7 @@ const SquareImage = styled(Img)`
     width: 540px;
 `;
 
-const AboutSection = ({ title, description, index, image }: IAboutSection) => {
+const AboutSection = ({ title, titleColor, description, index, image }: IAboutSection) => {
 
     let img = null;
     if (image) {
@@ -105,7 +108,7 @@ const AboutSection = ({ title, description, index, image }: IAboutSection) => {
 
     return <Section direction={index % 2 == 0}>
         <SectionContent direction={isEven}>
-            <SectionHeader>{title}</SectionHeader>
+            <SectionHeader color={titleColor}>{title}</SectionHeader>
             <SectionParagraph>{description}</SectionParagraph>
         </SectionContent>
         {img}
@@ -124,7 +127,7 @@ const AboutPage = ({ data }: IProps) => {
             <Container>
                 <Hero title={node.title} description={node.description} />
                 {node.items.map((a, i) =>
-                    <AboutSection title={a.title} description={a.description} index={i} image={a.image ?? null} />
+                    <AboutSection title={a.title} titleColor={a.titleColor} description={a.description} index={i} image={a.image ?? null} />
                 )}
             </Container>
             <Footer />
@@ -157,6 +160,7 @@ query AboutPage {
           title
           items {
             title
+            titleColor
             description
             image {
               src {
