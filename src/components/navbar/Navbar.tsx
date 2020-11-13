@@ -3,6 +3,10 @@ import NavbarLinks from "./NavbarLinks"
 import styled from "styled-components"
 import NavbarLogo from "./NavbarLogo"
 
+interface IProps {
+  open?: boolean,
+}
+
 const Navigation = styled.nav`
   position: relative;
   background-color: transparent;
@@ -10,7 +14,8 @@ const Navigation = styled.nav`
   z-index: 2;
   align-self: center;
   border: none;
-  height: 2.5rem;
+  height: 173px;
+  box-sizing: border-box;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -36,7 +41,7 @@ const Toggle = styled.div`
   }
 `
 
-const Navbox = styled.div`
+const Navbox = styled.div<IProps>`
   display: flex;
   height: 100%;
   justify-content: flex-end;
@@ -48,15 +53,15 @@ const Navbox = styled.div`
     width: 100%;
     justify-content: flex-start;
     padding-top: 1rem;
-    background-color: #f7f7ff;
+    background-color: ${props => props.theme.palette.common.white};
     transition: all 0.3s ease-in;
     top: 5.5rem;
-    left: ${props => (props.open ? "-100%" : "0")};
+    left: ${props => (props.open ? "0" : "-100%")};
   }
 `
 
-const Hamburger = styled.div`
-  background-color: #f7f7ff;
+const Hamburger = styled.div<IProps>`
+  background-color: ${props => props.theme.palette.common.white};
   width: 30px;
   height: 3px;
   transition: all 0.3s linear;
@@ -69,7 +74,7 @@ const Hamburger = styled.div`
   ::after {
     width: 30px;
     height: 3px;
-    background-color: #f7f7ff;
+    background-color: ${props => props.theme.palette.common.white};
     content: "";
     position: absolute;
     transition: all 0.3s linear;
@@ -77,7 +82,7 @@ const Hamburger = styled.div`
 
   ::before {
     transform: ${props =>
-      props.open ? "rotate(-90deg) translate(-10px, 0px)" : "rotate(0deg)"};
+    props.open ? "rotate(-90deg) translate(-10px, 0px)" : "rotate(0deg)"};
     top: -10px;
   }
 
@@ -94,21 +99,12 @@ const Navbar = ({ siteTitle, menuLinks }) => {
   return (
     <Navigation>
       <NavbarLogo />
-      <Toggle
-        navbarOpen={navbarOpen}
-        onClick={() => setNavbarOpen(!navbarOpen)}
-      >
-        {navbarOpen ? <Hamburger open /> : <Hamburger />}
+      <Toggle onClick={() => setNavbarOpen(!navbarOpen)}>
+        <Hamburger open={navbarOpen} />
       </Toggle>
-      {navbarOpen ? (
-        <Navbox>
-          <NavbarLinks menuLinks={menuLinks} />
-        </Navbox>
-      ) : (
-        <Navbox open>
-          <NavbarLinks menuLinks={menuLinks} />
-        </Navbox>
-      )}
+      <Navbox open={navbarOpen}>
+        <NavbarLinks menuLinks={menuLinks} />
+      </Navbox>
     </Navigation>
   )
 }

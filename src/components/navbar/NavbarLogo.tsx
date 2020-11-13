@@ -20,7 +20,7 @@ const LogoWrap = styled.div`
 const NavbarLogo = () => {
   const data = useStaticQuery(graphql`
     query {
-      file(name: { eq: "hackademics-logo-tmp" }, extension: { eq: "png" }) {
+      file(name: { eq: "hackademics-logo-tmpB" }, extension: { eq: "png" }) {
         childImageSharp {
           fluid(pngQuality: 100) {
             ...GatsbyImageSharpFluid

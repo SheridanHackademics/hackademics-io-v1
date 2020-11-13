@@ -1,11 +1,10 @@
 import React from "react"
 import styled from "styled-components"
-import { Link, useStaticQuery, graphql } from "gatsby"
 
 import FooterLogo from "./FooterLogo"
 
 const FooterHolder = styled.footer`
-  position: sticky;
+  position: relative;
   height: 30vh;
   background-color: #212121;
   bottom: 0px;
@@ -16,11 +15,11 @@ const FooterHolder = styled.footer`
 const LinksHolder = styled.div`
 `
 
-const Footer = ({ menuLinks }) => (
+const Footer = (/*{ menuLinks }*/) => (
   <FooterHolder>
-      <FooterLogo />
-      <LinksHolder>
-      </LinksHolder>
+    <FooterLogo />
+    <LinksHolder>
+    </LinksHolder>
   </FooterHolder>
 )
 
