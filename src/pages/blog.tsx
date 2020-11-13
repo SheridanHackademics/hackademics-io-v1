@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import PostLink from "../components/post-link"
-import Layout from "../components/layout"
+import Layout from "../components/layout/layout"
 
 const BlogPage = ({
   data: {
@@ -12,7 +12,7 @@ const BlogPage = ({
     .filter(edge => !!edge.node.frontmatter.date) // You can filter your posts based on some criteria
     .map(edge => <PostLink key={edge.node.id} post={edge.node} />)
 
-  return <div><Layout>{Posts}</Layout></div>
+  return <div><Layout title="blog">{Posts}</Layout></div>
 }
 
 export default BlogPage
