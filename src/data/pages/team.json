@@ -1,0 +1,169 @@
+{
+    "title": "The Team",
+    "description": "Meet the 2020-2021 Hackademics team.",
+    "executives": [
+        {
+            "name": "Valeriia zub",
+            "title": "president",
+            "description": "Valeriia Zub is a Ukrainian Interaction Design student. After moving to Canada, Valeriia started believing in people, their stories, personalities, and needs. As a UX/UI designer, she has been participating in numerous non-profits, going to hackathons, and mentoring. Apart from studying and UX, she loves yoga, outdoor activities, cooking and watercolor.",
+            "image": {
+                "src": "../team-pictures/valeriia.jpg"
+            }
+        },
+        {
+            "name": "Alec Di Vito",
+            "title": "Vice President",
+            "description": "Alec Di Vito is in his last year of Mobile Computing. He has been at Sheridan for over 5 years and has extensive experience managing projects. Previously, he completed the SDNE program with a year-long capstone project that created a budgeting application for twelve McDonald’s stores in Germany. Alec can often be found biking or canoeing in northern Ontario.",
+            "image": {
+                "src": "../team-pictures/alec.png"
+            }
+        }
+    ],
+    "teams": [
+        {
+            "title": "Design Team",
+            "team": [
+                {
+                    "name": "Galaxia Wu",
+                    "title": "Lead",
+                    "description": "Galaxia is in her 2nd year of Interaction Design, and can often be caught slurping up a bubble tea while designing for a cool startup. If you see her, ask for a fun font fact!",
+                    "image": {
+                        "src": "../team-pictures/galaxia.jpg"
+                    }
+                },
+                {
+                    "name": "Wilson Truong",
+                    "title": "Team Member",
+                    "description": "Wilson is a 3rd year Interaction Design student. He likes cats and UI design.",
+                    "image": {
+                        "src": "../team-pictures/wilson.jpeg"
+                    }
+                },
+                {
+                    "name": "Michael Brz",
+                    "title": "Team Member",
+                    "description": "Michael Brzuchalski is a 3rd year Interaction Design student. He enjoys combining the physical and digital world to create playful interactive spaces.",
+                    "image": {
+                        "src": "../team-pictures/michael.jpeg"
+                    }
+                },
+                {
+                    "name": "Ezra dAniel",
+                    "title": "Team Member",
+                    "description": "Ezra is A 2nd year Interaction Design student. Ezra owns and operate various e-commerce businesses and hopes to one day run a not-for-profit social enterprise!",
+                    "image": {
+                        "src": "../team-pictures/ezra.jpeg"
+                    }
+                }
+            ]
+        },
+        {
+            "title": "Technology Team",
+            "team": [
+                {
+                    "name": "Omar Abu Samra",
+                    "title": "Lead",
+                    "description": "Andres is a 2nd year SDNE student who is always looking to learn something new. Some of his passions are learning languages, building legos, and coding.",
+                    "image": {
+                        "src": "../team-pictures/placeholder2.png"
+                    }
+                },
+                {
+                    "name": "Jacob Brasil",
+                    "title": "Team Member",
+                    "description": "Jacob is a 2nd year SDNE student . He loves to work on projects incorporating new technologies and bringing ideas to life. He likes to challenge himself to learn new languages and frameworks to keep his skillsets up to date!",
+                    "image": {
+                        "src": "../team-pictures/placeholder1.png"
+                    }
+                },
+                {
+                    "name": "Andres Munevar",
+                    "title": "Team Member",
+                    "description": "Andres is a 2nd year SDNE student who is always looking to learn something new. Some of his passions are learning languages, building legos, and coding.",
+                    "image": {
+                        "src": "../team-pictures/andres.jpg"
+                    }
+                },
+                {
+                    "name": "Ameer Ahmad",
+                    "title": "Team Member",
+                    "description": "Ameer is a Software Engineering student. His passions include programming and learning new technologies. You can catch him watching the Raptors and playing basketball.",
+                    "image": {
+                        "src": "../team-pictures/ameer.png"
+                    }
+                }
+            ]
+        },
+        {
+            "title": "Marketing Team",
+            "team": [
+                {
+                    "name": "Kiran Patel",
+                    "title": "Lead",
+                    "description": "Kiran is a 4th year York/Sheridan Design student. He was born and raised in Waterloo, Ontario. His interests are interaction design, illustration, and HTML/CSS/JS.",
+                    "image": {
+                        "src": "../team-pictures/kiran.jpg"
+                    }
+                },
+                {
+                    "name": "Rithika Mirnalini Rameshkumar",
+                    "title": "Team Member",
+                    "description": "Rithika is a 3rd year Interaction Design student. Her strengths lie in creating brand identity and marketing. She is a sustainability advocate and loves caring for her plant babies.",
+                    "image": {
+                        "src": "../team-pictures/Rithika.jpeg"
+                    }
+                }
+            ]
+        },
+        {
+            "title": "Communications Team",
+            "team": [
+                {
+                    "name": "Kenzie Stone",
+                    "title": "Lead",
+                    "description": "Kenzie is a 3rd year Interaction Design student. She has a background in graphic design and traditional art. She enjoys music, concerts, podcasts, fashion, and product design.",
+                    "image": {
+                        "src": "../team-pictures/Kenzie.jpeg"
+                    }
+                },
+                {
+                    "name": "William Luk",
+                    "title": "Team Member",
+                    "description": "William is a 3rd year Interaction Design student. On top of design, he has a passion for competitive gaming and manages one of the many Sheridan eSports collegiate teams in organized leagues.",
+                    "image": {
+                        "src": "../team-pictures/william.jpg"
+                    }
+                },
+                {
+                    "name": "Rohail Khan",
+                    "title": "Team Member",
+                    "description": "Rohail is an 2nd year Interaction Design student. He enjoys designing interfaces, listening to podcasts and hanging out with friends.",
+                    "image": {
+                        "src": "../team-pictures/rohail.PNG"
+                    }
+                }
+            ]
+        },
+        {
+            "title": "Social Media Team",
+            "team": [
+                {
+                    "name": "Mais Enaya",
+                    "title": "Lead",
+                    "description": "Mais is a 3rd year IxD student. Aside from school, she is always getting involved and learning new skills. She’s been to over ten hackathons, is an ex-Adobe Ambassador, likes going on walks, and is learning hula hoop!",
+                    "image": {
+                        "src": "../team-pictures/placeholder3.png"
+                    }
+                },
+                {
+                    "name": "Maeve Drynan",
+                    "title": "Team Member",
+                    "description": "Maeve Drynan is a 2nd yearInteraction Design student. Before IXD, she took Sheridan’s Media Fundamentals program. She enjoys web design, coding, and graphic design.",
+                    "image": {
+                        "src": "../team-pictures/maeve.jpg"
+                    }
+                }
+            ]
+        }
+    ]
+}
