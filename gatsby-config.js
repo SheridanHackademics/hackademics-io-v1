@@ -42,31 +42,20 @@ module.exports = {
   plugins: [
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
-    `gatsby-transformer-remark`,
-    `gatsby-transformer-sharp`,
+    `gatsby-transformer-json`,
     `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-source-contentful`,
       options: {
-        spaceId: `lit3mu9wj9wq`,
-        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
-      }
-    },
-    {
-      resolve: `gatsby-plugin-typescript`,
-      options: {
-        isTSX: false, // defaults to false
-        jsxPragma: `React`, // defaults to "React"
-        allExtensions: false, // defaults to false
+        path: `${__dirname}/src/data/`,
       },
     },
     {
-      resolve: 'gatsby-plugin-react-svg',
+      resolve: `gatsby-source-filesystem`,
       options: {
-        rule: {
-          include: /svgs/
-        }
-      }
+        name: `pages`,
+        path: `${__dirname}/src/data/pages`,
+      },
     },
     {
       resolve: `gatsby-source-filesystem`,
@@ -75,6 +64,7 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    `gatsby-transformer-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {

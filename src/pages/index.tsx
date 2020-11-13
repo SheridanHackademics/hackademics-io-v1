@@ -1,11 +1,11 @@
 import { graphql, useStaticQuery } from "gatsby"
 import React from "react"
+import SEO from "../components/seo"
 import Footer from "../components/footer/Footer"
 import Hero from "../components/hero/Hero"
 import LandingContent from "../components/LandingContent"
 import { DefaultLayout, LandingLayout } from "../components/layouts"
 import Navbar from "../components/navbar/Navbar"
-import SEO from "../components/seo"
 
 const IndexPage = () => {
   const data = useStaticQuery(graphql`
