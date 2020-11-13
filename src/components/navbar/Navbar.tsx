@@ -55,7 +55,7 @@ const Navbox = styled.div<IProps>`
     width: 100%;
     justify-content: flex-start;
     padding-top: 1rem;
-    background-color: ${props => props.theme.palette.common.white};
+    background-color: #fff;
     transition: all 0.3s ease-in;
     top: 5.5rem;
     left: ${props => (props.open ? "0" : "-100%")};
@@ -63,7 +63,7 @@ const Navbox = styled.div<IProps>`
 `
 
 const Hamburger = styled.div<IProps>`
-  background-color: ${props => props.theme.palette.common.white};
+  background-color: #fff;
   width: 30px;
   height: 3px;
   transition: all 0.3s linear;
@@ -76,7 +76,7 @@ const Hamburger = styled.div<IProps>`
   ::after {
     width: 30px;
     height: 3px;
-    background-color: ${props => props.theme.palette.common.white};
+    background-color: #fff;
     content: "";
     position: absolute;
     transition: all 0.3s linear;

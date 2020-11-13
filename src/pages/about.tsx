@@ -1,7 +1,7 @@
 import { graphql } from "gatsby";
 import React from "react";
 import Footer from "../components/footer/Footer";
-import Layout from "../components/layout/layout";
+import { DefaultLayout, LandingLayout } from "../components/layouts";
 import Navbar from "../components/navbar/Navbar";
 import Img, { FluidObject } from "gatsby-image"
 import Hero from "../components/hero";
@@ -69,7 +69,7 @@ const Section = styled.section<{ direction: boolean }>`
 
 const SectionHeader = styled.h1<{ color: PrimaryColor }>` 
     font-family: "Open Sans", sans-serif;
-    color: ${props => props.theme.palette.primary[props.color]};
+    color: #2952E5;
     letter-spacing: 5.5px;
     text-transform: uppercase;
     font-size: 55px;
@@ -89,7 +89,7 @@ const SectionContent = styled.div<{ direction?: boolean }>`
         : (props.direction) ? "0rem 5rem 0rem 0rem" : "0rem 0rem 0rem 5rem"};
 `;
 
-const SquareImage = styled(Img)`
+const SquareImageHolder = styled(Img)`
     flex: 1; /* additionally, equal width */
     height: 540px;
     width: 540px;
@@ -99,7 +99,7 @@ const AboutSection = ({ title, titleColor, description, index, image }: IAboutSe
 
     let img = null;
     if (image) {
-        img = <SquareImage fluid={image.src.childImageSharp.fluid} alt={title} />;
+        img = <SquareImageHolder><Img fluid={image.src.childImageSharp.fluid} alt={title} /></SquareImageHolder>;
     }
     let isEven = index % 2 == 0;
     if (index === 0) {
@@ -118,7 +118,7 @@ const AboutSection = ({ title, titleColor, description, index, image }: IAboutSe
 const AboutPage = ({ data }: IProps) => {
     const { node } = data.allPagesJson.edges[0];
     return (
-        <Layout title='about'>
+        <DefaultLayout>
             <Navbar
                 siteTitle={data.site.siteMetadata.title}
                 menuLinks={data.site.siteMetadata.menuLinks}
@@ -130,8 +130,8 @@ const AboutPage = ({ data }: IProps) => {
                     <AboutSection title={a.title} titleColor={a.titleColor} description={a.description} index={i} image={a.image ?? null} />
                 )}
             </Container>
-            <Footer />
-        </Layout>
+            <Footer menuLinks={data.site.siteMetadata.menuLinks}/>
+        </DefaultLayout>
     )
 }
 

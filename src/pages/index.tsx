@@ -4,7 +4,7 @@ import SEO from "../components/seo"
 import Footer from "../components/footer/Footer"
 import Hero from "../components/hero/Hero"
 import LandingContent from "../components/LandingContent"
-import { DefaultLayout, LandingLayout } from "../components/layouts"
+import { ImageLayout, LandingLayout } from "../components/layouts"
 import Navbar from "../components/navbar/Navbar"
 
 const IndexPage = () => {
@@ -30,7 +30,7 @@ const IndexPage = () => {
   `)
 
   return (
-    <DefaultLayout image={data.file.childImageSharp.fluid}>
+    <ImageLayout image={data.file.childImageSharp.fluid}>
       <SEO title="Home" />
       <Navbar
         siteTitle={data.site.siteMetadata.title}
@@ -41,7 +41,7 @@ const IndexPage = () => {
         <LandingContent/>
       </LandingLayout>
       <Footer menuLinks={data.site.siteMetadata.menuLinks} />
-    </DefaultLayout>
+    </ImageLayout>
   )
 }
 

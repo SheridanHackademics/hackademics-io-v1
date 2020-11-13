@@ -47,7 +47,15 @@ module.exports = {
     {
       resolve: `gatsby-source-contentful`,
       options: {
-        path: `${__dirname}/src/data/`,
+        spaceId: `lit3mu9wj9wq`,
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `data`,
+        path: `${__dirname}/src/data`,
       },
     },
     {

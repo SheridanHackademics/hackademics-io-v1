@@ -7,18 +7,18 @@ import { Link } from "gatsby";
 const NavItem = styled(Link)`
   font-size: 18px;
   font-weight: 800;
-  color: ${props => props.theme.palette.common.black};
+  color: #fff;
   transition: all 0.3s ease 0s;
   text-decoration: none;
   margin-left: 2.5rem;
   text-transform: uppercase;
 
   :hover {
-    color: ${props => props.theme.palette.common.gray};
+    color: #eee;
   }
 
   @media (max-width: 1100px) {
-    color: ${props => props.theme.palette.uncommon.lightBlack};
+    color: #fff;
     padding: 20px 0;
     font-size: 1.5rem;
     z-index: 6;
