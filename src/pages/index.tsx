@@ -6,6 +6,7 @@ import Hero from "../components/hero/Hero"
 import { ImageLayout, LandingLayout } from "../components/layouts"
 import Navbar from "../components/navbar/Navbar"
 import LandingItem from "../components/LandingItem"
+import ContactHero from "../components/ContactHero"
 
 const IndexPage = () => {
   const data = useStaticQuery(graphql`
@@ -72,6 +73,7 @@ const IndexPage = () => {
             illustration={item.node.illustration}
           />
         ))}
+        <ContactHero title="Have more questions? Reach out to us!"/>
       </LandingLayout>
       <Footer menuLinks={data.site.siteMetadata.menuLinks} />
     </>

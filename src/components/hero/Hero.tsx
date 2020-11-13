@@ -32,7 +32,7 @@ const HeroButton = styled.button`
   padding-bottom: 25px;
   color: #ffffff;
   background-color: #2662dd;
-  font-size: 33px;
+  font-size: 1.75rem;
   font-weight: 700;
   letter-spacing: 3.3px;
   border: none;

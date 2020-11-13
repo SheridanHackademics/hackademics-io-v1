@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import Img from "gatsby-image"
+import Img, { FluidObject } from "gatsby-image"
 
 const LandingItemContent = styled.div<{ direction: boolean }>`
   display: flex;
@@ -66,7 +66,7 @@ interface LandingItemProps {
   href: string
   button: string
   color: string
-  illustration?: {
+  illustration: {
     fluid
   }
 }
