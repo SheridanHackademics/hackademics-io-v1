@@ -3,9 +3,9 @@ import React from "react"
 import SEO from "../components/seo"
 import Footer from "../components/footer/Footer"
 import Hero from "../components/hero/Hero"
-import LandingContent from "../components/LandingContent"
 import { ImageLayout, LandingLayout } from "../components/layouts"
 import Navbar from "../components/navbar/Navbar"
+import LandingItem from "../components/LandingItem"
 
 const IndexPage = () => {
   const data = useStaticQuery(graphql`
@@ -26,6 +26,27 @@ const IndexPage = () => {
           }
         }
       }
+      allContentfulLandingPageItem(sort: { order: ASC, fields: createdAt }) {
+        edges {
+          node {
+            id
+            title
+            description {
+              description
+            }
+            buttonText
+            buttonColor {
+              hexColor
+            }
+            buttonUrl
+            illustration {
+              fixed(width: 730, height: 1080, quality: 100) {
+                ...GatsbyContentfulFixed_noBase64
+              }
+            }
+          }
+        }
+      }
     }
   `)
 
@@ -36,9 +57,19 @@ const IndexPage = () => {
         siteTitle={data.site.siteMetadata.title}
         menuLinks={data.site.siteMetadata.menuLinks}
       />
-      <Hero/>
+      <Hero />
       <LandingLayout>
-        <LandingContent/>
+        {data.allContentfulLandingPageItem.edges.map((item, i) => (
+          <LandingItem
+            index={i}
+            title={item.node.title}
+            description={item.node.description.description}
+            button={item.node.buttonText}
+            href={item.node.buttonUrl}
+            color={item.node.buttonColor.hexColor}
+            illustration={item.node.illustration}
+          />
+        ))}
       </LandingLayout>
       <Footer menuLinks={data.site.siteMetadata.menuLinks} />
     </ImageLayout>
