@@ -1,0 +1,24 @@
+{
+    "title": "About us",
+    "description": "Learn more about Hackademics and our events.",
+    "items": [
+        {
+            "title": "WHO WE ARE",
+            "description": "Hackademics is made up of a team of designers and developers with the common goal to spread enthusiasm about hackathon competition and hack culture, both within the Sheridan College community and beyond. We host an annual hackathon, a weekly podcast, as well as various events throughout the year."
+        },
+        {
+            "title": "WHAT WE DO",
+            "description": "Hackademics has always promoted hack culture while planning our own hackathon. This year, we launched our brand new podcast. Our next big project is launching the Hackademics blog, which will further elaborate on hackathons’ benefits and the importance of hack culture.",
+            "image": {
+                "src": "../../images/template-img.png"
+            }
+        },
+        {
+            "title": "OUR EVENTS",
+            "description": "In addition to Hackville, we host an annual mixer and workshops covering everything from design to hackathon tools to soft skills. Follow us on our social media channels to keep up to date with our upcoming events!",
+            "image": {
+                "src": "../../images/template-img.png"
+            }
+        }
+    ]
+}
