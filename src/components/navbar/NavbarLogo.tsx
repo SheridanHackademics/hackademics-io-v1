@@ -9,11 +9,11 @@ const LogoWrap = styled.div`
   min-width: 205px;
   margin-top: -4px;
 
-  @media (max-width: 1100px) and (orientation: landscape) {
+  @media (max-width: 1256px) and (orientation: landscape) {
     flex: 0 1 25px;
   }
 
-  @media (max-width: 1100px) {
+  @media (max-width: 1256px) {
     margin-top: 5.5px;
   }
 `

@@ -3,7 +3,6 @@ import styled from "styled-components"
 import { Link } from "gatsby"
 
 const NavItem = styled(Link)`
-  font-family: "Open Sans", sans-serif;
   font-size: 18px;
   font-weight: 800;
   color: #fff;

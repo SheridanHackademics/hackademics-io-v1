@@ -5,7 +5,6 @@ import { Link, useStaticQuery, graphql } from "gatsby"
 import FooterLogo from "./FooterLogo"
 
 const FooterHolder = styled.footer`
-  position: sticky;
   height: 30vh;
   background-color: #212121;
   bottom: 0px;
