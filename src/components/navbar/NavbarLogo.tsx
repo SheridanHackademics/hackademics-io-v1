@@ -17,10 +17,17 @@ const LogoWrap = styled.div`
     margin-top: 5.5px;
   }
 `
-const NavbarLogo = () => {
+const NavbarLogo = ({useDark}) => {
   const data = useStaticQuery(graphql`
     query {
-      file(name: { eq: "hackademics-logo-tmp" }, extension: { eq: "png" }) {
+      logoLight: file(name: { eq: "hackademics-logo-tmp" }, extension: { eq: "png" }) {
+        childImageSharp {
+          fluid(pngQuality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      logoDark: file(name: { eq: "hackademics-logo-tmpB" }, extension: { eq: "png" }) {
         childImageSharp {
           fluid(pngQuality: 100) {
             ...GatsbyImageSharpFluid
@@ -32,7 +39,7 @@ const NavbarLogo = () => {
 
   return (
     <LogoWrap as={Link} to="/">
-      <Img fluid={data.file.childImageSharp.fluid} alt="logo" />
+      <Img fluid={useDark ? data.logoDark.childImageSharp.fluid : data.logoLight.childImageSharp.fluid} alt="logo" />
     </LogoWrap>
   )
 }

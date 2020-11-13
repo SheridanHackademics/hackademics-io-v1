@@ -62,7 +62,7 @@ const Navbox = styled.div<IProps>`
 `
 
 const Hamburger = styled.div<IProps>`
-  background-color: #fff;
+  background-color: #f7f7ff;
   width: 30px;
   height: 3px;
   transition: all 0.3s linear;
@@ -75,7 +75,7 @@ const Hamburger = styled.div<IProps>`
   ::after {
     width: 30px;
     height: 3px;
-    background-color: #fff;
+    background-color: #f7f7ff;
     content: "";
     position: absolute;
     transition: all 0.3s linear;
@@ -94,17 +94,54 @@ const Hamburger = styled.div<IProps>`
   }
 `
 
-const Navbar = ({ siteTitle, menuLinks }) => {
+const HamburgerDark = styled.div<IProps>`
+  background-color: #0f0f11;
+  width: 30px;
+  height: 3px;
+  transition: all 0.3s linear;
+  align-self: center;
+  justify-self: flex-end;
+  position: relative;
+  transform: ${props => (props.open ? "rotate(-45deg)" : "inherit")};
+
+  ::before,
+  ::after {
+    width: 30px;
+    height: 3px;
+    background-color: #0f0f11;
+    content: "";
+    position: absolute;
+    transition: all 0.3s linear;
+  }
+
+  ::before {
+    transform: ${props =>
+    props.open ? "rotate(-90deg) translate(-10px, 0px)" : "rotate(0deg)"};
+    top: -10px;
+  }
+
+  ::after {
+    opacity: ${props => (props.open ? "0" : "1")};
+    transform: ${props => (props.open ? "rotate(90deg) " : "rotate(0deg)")};
+    top: 10px;
+  }
+`
+
+const Navbar = ({ menuLinks, useDark }) => {
   const [navbarOpen, setNavbarOpen] = useState(false)
 
   return (
     <Navigation>
-      <NavbarLogo />
+      <NavbarLogo useDark={useDark} />
       <Toggle onClick={() => setNavbarOpen(!navbarOpen)}>
-        <Hamburger open={navbarOpen} />
+        {useDark ? (
+          <HamburgerDark open={navbarOpen} />
+        ) : (
+          <Hamburger open={navbarOpen} />
+        )}
       </Toggle>
       <Navbox open={navbarOpen}>
-        <NavbarLinks menuLinks={menuLinks} />
+        <NavbarLinks useDark={useDark} menuLinks={menuLinks} />
       </Navbox>
     </Navigation>
   )

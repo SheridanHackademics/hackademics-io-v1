@@ -56,7 +56,7 @@ const IndexPage = () => {
       <ImageLayout image={data.file.childImageSharp.fluid}>
         <SEO title="Home" />
         <Navbar
-          siteTitle={data.site.siteMetadata.title}
+          useDark={false}
           menuLinks={data.site.siteMetadata.menuLinks}
         />
         <Hero />

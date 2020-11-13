@@ -5,7 +5,6 @@ import { Link } from "gatsby";
 const NavItem = styled(Link)`
   font-size: 18px;
   font-weight: 800;
-  color: #fff;
   transition: all 0.3s ease 0s;
   text-decoration: none;
   margin-left: 2.5rem;
@@ -23,11 +22,11 @@ const NavItem = styled(Link)`
   }
 `
 
-const NavbarLinks = ({ menuLinks }) => {
+const NavbarLinks = ({ menuLinks, useDark }) => {
   return (
     <>
       {menuLinks.map((link: { name: string; slug: string }) => (
-        <NavItem key={link.name} to={link.slug}>{link.name}</NavItem>
+        <NavItem key={link.name} style={{ color: useDark ? "#0F0F11" : "#f7f7ff" }} to={link.slug}>{link.name}</NavItem>
       ))}
     </>
   )

@@ -120,7 +120,7 @@ const AboutPage = ({ data }: IProps) => {
     return (
         <DefaultLayout>
             <Navbar
-                siteTitle={data.site.siteMetadata.title}
+                useDark={true}
                 menuLinks={data.site.siteMetadata.menuLinks}
             />
             <Img fluid={data.header.childImageSharp.fluid} alt="header" />
