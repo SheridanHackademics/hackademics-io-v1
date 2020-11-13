@@ -5,7 +5,7 @@ import styled from "styled-components"
 
 const HeroHolder = styled.div`
   color: #f7f7ff;
-  margin-top: 19.7vh;
+  margin-top: 15vh;
   margin-bottom: 29vh;
   display: flex;
   flex-wrap: wrap;
