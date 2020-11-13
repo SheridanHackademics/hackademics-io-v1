@@ -2,8 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "gatsby";
 
-
-
 const NavItem = styled(Link)`
   font-size: 18px;
   font-weight: 800;
@@ -14,11 +12,11 @@ const NavItem = styled(Link)`
   text-transform: uppercase;
 
   :hover {
-    color: #eee;
+    color: #ddd;
   }
 
   @media (max-width: 1100px) {
-    color: #fff;
+    color: #111;
     padding: 20px 0;
     font-size: 1.5rem;
     z-index: 6;
@@ -27,11 +25,11 @@ const NavItem = styled(Link)`
 
 const NavbarLinks = ({ menuLinks }) => {
   return (
-    <div>
+    <>
       {menuLinks.map((link: { name: string; slug: string }) => (
         <NavItem key={link.name} to={link.slug}>{link.name}</NavItem>
       ))}
-    </div>
+    </>
   )
 }
 

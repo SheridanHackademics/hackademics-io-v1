@@ -14,8 +14,7 @@ const Navigation = styled.nav`
   z-index: 2;
   align-self: center;
   border: none;
-  height: 173px;
-  box-sizing: border-box;
+  height: 4.5vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
