@@ -30,7 +30,7 @@ module.exports = {
       },
       {
         name: "Contact",
-        slug: "/contact",
+        slug: "mailto:sheridanhackademics@gmail.com",
         footer: true,
       },
     ]

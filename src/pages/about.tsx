@@ -3,26 +3,12 @@ import React from "react";
 import Footer from "../components/footer/Footer";
 import Layout from "../components/layout/layout";
 import Navbar from "../components/navbar/Navbar";
-import Img, { FluidObject } from "gatsby-image"
+import Img from "gatsby-image"
 import Hero from "../components/hero";
 import Container from "../components/container";
 import styled from "styled-components";
 import { PrimaryColor } from "../themes/theme";
-// import Section from "../components/section";
-
-interface IChildImageSharp {
-    childImageSharp: {
-        fluid: FluidObject,
-    }
-}
-
-interface Edges<T> {
-    edges: T[]
-}
-
-interface Node<T> {
-    node: T
-}
+import { Edges, IChildImageSharp, Node } from "../types";
 
 interface IProps {
     data: {
