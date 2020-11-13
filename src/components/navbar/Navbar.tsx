@@ -127,7 +127,7 @@ const HamburgerDark = styled.div<IProps>`
   }
 `
 
-const Navbar = ({ menuLinks, useDark }) => {
+const Navbar = ({ menuLinks, useDark = false }) => {
   const [navbarOpen, setNavbarOpen] = useState(false)
 
   return (
