@@ -5,16 +5,20 @@ import Img from "gatsby-image"
 const LandingItemContent = styled.div<{ direction: boolean }>`
   display: flex;
   justify-content: space-between;
-  flex-flow: row wrap;
   text-align: ${props => (props.direction ? "left" : "right")};
   flex-direction: ${props => (props.direction ? "row" : "row-reverse")};
-  margin-bottom: 347px;
-  padding-left: ${props => (props.direction ? "302px" : "0")};
-  padding-right: ${props => (props.direction ? "0" : "302px")};
+  padding-left: ${props => (props.direction ? "15.73vw" : "0")};
+  padding-right: ${props => (props.direction ? "0" : "15.73vw")};
+
+  @media (max-width: 788px) {
+    flex-flow: row wrap;
+    padding-left: ${props => (props.direction ? "5vw" : "0")};
+    padding-right: ${props => (props.direction ? "0" : "5vw")};
+  }
 `
 
 const ItemText = styled.div`
-  z-index: 5;
+  padding-top: 15%;
 `
 
 const SmallHeader = styled.h2`
@@ -51,7 +55,8 @@ const LandingButton = styled.button`
 `
 
 const ImgWrap = styled.div`
-  margin-top: -34.5vh;
+  width: 730px;
+  height: 1080px;
 `
 
 interface LandingItemProps {
@@ -62,7 +67,7 @@ interface LandingItemProps {
   button: string
   color: string
   illustration?: {
-    fixed
+    fluid
   }
 }
 
@@ -70,9 +75,7 @@ const LandingItem = (details: LandingItemProps) => (
   <LandingItemContent direction={details.index % 2 == 0}>
     <ItemText>
       <SmallHeader>{details.title}</SmallHeader>
-      <SmallContent>
-        {details.description}
-      </SmallContent>
+      <SmallContent>{details.description}</SmallContent>
       <a href={details.href} style={{ textDecoration: "none" }}>
         <LandingButton style={{ backgroundColor: details.color }}>
           {details.button}
@@ -80,7 +83,7 @@ const LandingItem = (details: LandingItemProps) => (
       </a>
     </ItemText>
     <ImgWrap>
-    <Img fixed={details.illustration.fixed}></Img>
+      <Img fluid={details.illustration.fluid}></Img>
     </ImgWrap>
   </LandingItemContent>
 )

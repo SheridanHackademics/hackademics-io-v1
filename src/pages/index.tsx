@@ -40,8 +40,8 @@ const IndexPage = () => {
             }
             buttonUrl
             illustration {
-              fixed(width: 730, height: 1080, quality: 100) {
-                ...GatsbyContentfulFixed_noBase64
+              fluid(quality: 100) {
+                ...GatsbyContentfulFluid_noBase64
               }
             }
           }
@@ -51,13 +51,15 @@ const IndexPage = () => {
   `)
 
   return (
-    <ImageLayout image={data.file.childImageSharp.fluid}>
-      <SEO title="Home" />
-      <Navbar
-        siteTitle={data.site.siteMetadata.title}
-        menuLinks={data.site.siteMetadata.menuLinks}
-      />
-      <Hero />
+    <>
+      <ImageLayout image={data.file.childImageSharp.fluid}>
+        <SEO title="Home" />
+        <Navbar
+          siteTitle={data.site.siteMetadata.title}
+          menuLinks={data.site.siteMetadata.menuLinks}
+        />
+        <Hero />
+      </ImageLayout>
       <LandingLayout>
         {data.allContentfulLandingPageItem.edges.map((item, i) => (
           <LandingItem
@@ -72,7 +74,7 @@ const IndexPage = () => {
         ))}
       </LandingLayout>
       <Footer menuLinks={data.site.siteMetadata.menuLinks} />
-    </ImageLayout>
+    </>
   )
 }
 
