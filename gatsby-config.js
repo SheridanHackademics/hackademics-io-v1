@@ -88,6 +88,13 @@ module.exports = {
         ],
       },
     },
+    {
+      resolve: `gatsby-source-rss-feed`,
+      options: {
+        url: `https://anchor.fm/s/35f891cc/podcast/rss`,
+        name: `HackademicsPodcast`
+      }
+    }
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
