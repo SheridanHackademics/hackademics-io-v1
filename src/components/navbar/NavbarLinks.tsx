@@ -5,7 +5,7 @@ import { Link } from "gatsby";
 const NavItem = styled(Link)<{ color: string }>`
   font-size: 18px;
   font-weight: 800;
-  color: ${props => props.color}
+  color: ${props => props.color};
   transition: all 0.3s ease 0s;
   text-decoration: none;
   margin-left: 2.5rem;
