@@ -54,7 +54,7 @@ const Navbox = styled.div<IProps>`
     padding-top: 1rem;
     background-color: #fff;
     transition: all 0.3s ease-in;
-    top: 5.5rem;
+    top: 5.3rem;
     left: ${props => (props.open ? "0" : "-100%")};
   }
 `

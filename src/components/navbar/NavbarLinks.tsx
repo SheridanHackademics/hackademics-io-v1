@@ -2,9 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "gatsby";
 
-const NavItem = styled(Link)`
+const NavItem = styled(Link)<{ color: string }>`
   font-size: 18px;
   font-weight: 800;
+  color: ${props => props.color}
   transition: all 0.3s ease 0s;
   text-decoration: none;
   margin-left: 2.5rem;
@@ -26,7 +27,7 @@ const NavbarLinks = ({ menuLinks, useDark }) => {
   return (
     <>
       {menuLinks.map((link: { name: string; slug: string }) => (
-        <NavItem key={link.name} style={{ color: useDark ? "#0F0F11" : "#f7f7ff" }} to={link.slug}>{link.name}</NavItem>
+        <NavItem key={link.name} color={ useDark ? "#0F0F11" : "#f7f7ff" } to={link.slug}>{link.name}</NavItem>
       ))}
     </>
   )
