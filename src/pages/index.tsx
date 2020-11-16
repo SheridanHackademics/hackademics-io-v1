@@ -18,6 +18,7 @@ interface IProps {
         menuLinks: {
           name: string
           slug: string
+          footer: boolean
         }[]
       }
     }
@@ -163,6 +164,7 @@ export const query = graphql`
         menuLinks {
           name
           slug
+          footer
         }
       }
     }

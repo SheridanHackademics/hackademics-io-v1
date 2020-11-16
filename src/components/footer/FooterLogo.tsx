@@ -11,6 +11,10 @@ const LogoWrap = styled.div`
   @media (max-width: 1100px) and (orientation: landscape) {
     flex: 0 1 25px;
   }
+
+  @media (max-width: 788px) {
+    display: none;
+  }
 `
 const FooterLogo = () => {
   const data = useStaticQuery(graphql`
