@@ -15,7 +15,6 @@ const BackgroundSection = ({ children, image }) => (
   <StyledBackgroundImage
     Tag="section"
     fluid={image}
-    backgroundColor={`#fff`}
   >
     {children}
   </StyledBackgroundImage>

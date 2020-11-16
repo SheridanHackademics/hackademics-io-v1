@@ -27,13 +27,6 @@ interface IProps {
   }
 }
 
-interface ITeamPage {
-  title: string
-  description: string
-  executives: ITeamMember[]
-  teams: ITeam[]
-}
-
 interface ITeam {
   id?: string
   teamName: string
@@ -71,7 +64,7 @@ const Section = styled.section<{
 
 const SectionHeader = styled.h1`
   font-family: "Open Sans", sans-serif;
-  color: #181818;
+  color: ${props => props.theme.palette.uncommon.lightBlack};
   letter-spacing: 1.8px;
   text-transform: uppercase;
   font-size: 2.25em;
@@ -81,7 +74,7 @@ const SectionHeader = styled.h1`
 
 const SectionParagraph = styled.p`
   font-family: "Open Sans", sans-serif;
-  color: #181818;
+  color: ${props => props.theme.palette.uncommon.lightBlack};
   font-size: 1.5em;
 `
 

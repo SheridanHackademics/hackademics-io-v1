@@ -16,6 +16,7 @@ export const defaultTheme: DefaultTheme = {
         uncommon: {
             lightBlack: '#181818',
             brightBlack: '#212121',
+            offWhite: '#F7F7FF',
         },
         primary: {
             red: '#EC4564',

@@ -65,7 +65,7 @@ const ItemText = styled.div`
 const SmallHeader = styled.h2`
   font-size: 24px;
   letter-spacing: 0px;
-  color: #000;
+  color: ${props => props.theme.palette.common.black};
   font-weight: 800;
   margin-bottom: 16px;
 `
@@ -73,7 +73,7 @@ const SmallHeader = styled.h2`
 const SmallContent = styled.p`
   font-size: 24px;
   letter-spacing: 0px;
-  color: #000;
+  color: ${props => props.theme.palette.common.black};
   max-width: 540px;
   margin-bottom: 16px;
 `
@@ -83,7 +83,7 @@ const LandingButton = styled.button`
   padding-right: 60px;
   padding-top: 20px;
   padding-bottom: 20px;
-  color: #ffffff;
+  color: ${props => props.theme.palette.common.white};
   font-size: 25px;
   font-weight: 500;
   letter-spacing: 2.6px;

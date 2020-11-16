@@ -23,8 +23,8 @@ const Title = styled.h1`
 
 const Button = styled.button`
   padding: 20px 60px;
-  color: #ffffff;
-  background-color: #0ba083;
+  color: ${props => props.theme.palette.common.white};
+  background-color: ${props => props.theme.palette.primary.green};
   font-size: 1.75rem;
   font-weight: 500;
   letter-spacing: 2.8px;
