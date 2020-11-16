@@ -42,7 +42,7 @@ const IndexPage = () => {
             buttonUrl
             illustration {
               fluid(quality: 100) {
-                ...GatsbyContentfulFluid_noBase64
+                ...GatsbyContentfulFluid_tracedSVG
               }
             }
           }

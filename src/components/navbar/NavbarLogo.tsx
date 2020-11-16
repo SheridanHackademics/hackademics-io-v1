@@ -23,14 +23,14 @@ const NavbarLogo = ({useDark}) => {
       logoLight: file(name: { eq: "hackademics-logo-tmp" }, extension: { eq: "png" }) {
         childImageSharp {
           fluid(pngQuality: 100) {
-            ...GatsbyImageSharpFluid
+            ...GatsbyImageSharpFluid_tracedSVG
           }
         }
       }
       logoDark: file(name: { eq: "hackademics-logo-tmpB" }, extension: { eq: "png" }) {
         childImageSharp {
           fluid(pngQuality: 100) {
-            ...GatsbyImageSharpFluid
+            ...GatsbyImageSharpFluid_tracedSVG
           }
         }
       }

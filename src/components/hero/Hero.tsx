@@ -70,7 +70,7 @@ const Hero = () => {
       file(name: { eq: "hackville" }, extension: { eq: "png" }) {
         childImageSharp {
           fluid(pngQuality: 100) {
-            ...GatsbyImageSharpFluid
+            ...GatsbyImageSharpFluid_tracedSVG
           }
         }
       }

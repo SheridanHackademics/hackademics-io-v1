@@ -18,7 +18,7 @@ const FooterLogo = () => {
       file(name: { eq: "hackademics-logo-tmpW" }, extension: { eq: "png" }) {
         childImageSharp {
           fluid(pngQuality: 100) {
-            ...GatsbyImageSharpFluid
+            ...GatsbyImageSharpFluid_tracedSVG
           }
         }
       }
