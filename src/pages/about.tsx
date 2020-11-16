@@ -7,7 +7,6 @@ import Img from "gatsby-image"
 import Hero from "../components/hero"
 import Container from "../components/container"
 import styled from "styled-components"
-import { PrimaryColor } from "../themes/theme"
 import { Edges, IChildImageSharp, Node } from "../types"
 import SEO from "../components/seo"
 
