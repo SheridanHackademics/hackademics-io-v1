@@ -30,7 +30,7 @@ interface IProps {
 interface IAboutSection {
   id?: string
   title: string
-  order: number
+  index: number
   titleColor: {
     hexColor: string
   }
@@ -50,29 +50,35 @@ const Section = styled.section<{ direction: boolean }>`
   text-align: ${props => (props.direction ? "left" : "right")};
   flex-direction: ${props => (props.direction ? "row" : "row-reverse")};
 
-  @media (max-width: 788px) {
-    flex-flow: row wrap;
-    padding-left: ${props => (props.direction ? "5vw" : "0")};
-    padding-right: ${props => (props.direction ? "0" : "5vw")};
+  @media (max-width: ${props => props.theme.breakpoints.tablet}) {
+    margin: 1rem 1rem 4rem 1rem;
+    text-align: left;
+    flex-direction: "row";
   }
 `
 
 const SectionHeader = styled.h1<{ color: string }>`
-  font-family: "Open Sans", sans-serif;
+  font-family: ${props => props.theme.text.font};
   color: ${props => props.color};
   letter-spacing: 5.5px;
   text-transform: uppercase;
   font-size: 55px;
   margin-bottom: 2rem;
   height: 75px;
+
+  @media (max-width: ${props => props.theme.breakpoints.mobile}) {
+    font-size: 33px;
+    height: 50px;
+  }
 `
 
-const ItemText = styled.div``
+const ItemText = styled.div`
+  width: 100%;
+`;
 
 const SectionParagraph = styled.p<{ direction?: boolean }>`
-  font-family: "Open Sans", sans-serif;
+  font-family: ${props => props.theme.text.font};
   font-size: 1.2em;
-  max-width: 540px;
 `
 
 const SectionContent = styled.div<{ direction?: boolean }>`
@@ -81,13 +87,20 @@ const SectionContent = styled.div<{ direction?: boolean }>`
     props.direction === null
       ? "0rem"
       : props.direction
-      ? "0rem 5rem 0rem 0rem"
-      : "0rem 0rem 0rem 5rem"};
+        ? "0rem 5rem 0rem 0rem"
+        : "0rem 0rem 0rem 5rem"};
+
+  @media (max-width: ${props => props.theme.breakpoints.tablet}) {
+    margin: 0rem;
+  }
 `
 
 const SquareImageHolder = styled.div`
-  height: 540px;
   width: 540px;
+
+  @media (max-width: ${props => props.theme.breakpoints.tablet}) {
+    display: none;
+  }
 `
 
 const AboutSection = ({
@@ -95,21 +108,21 @@ const AboutSection = ({
   titleColor,
   description,
   image,
-  order,
+  index,
 }: IAboutSection) => {
 
-  let isEven = order % 2 == 0
-  if (order === 0) {
+  let isEven = index % 2 == 0
+  if (index === 0) {
     isEven = null
   }
 
   return (
-    <Section direction={order % 2 == 0}>
+    <Section direction={index % 2 == 0}>
       <ItemText>
-      <SectionContent direction={isEven}>
+        <SectionContent direction={isEven}>
           <SectionHeader color={titleColor.hexColor}>{title}</SectionHeader>
           <SectionParagraph direction={isEven}>{description.description}</SectionParagraph>
-      </SectionContent>
+        </SectionContent>
       </ItemText>
       {image != null ? (
         <SquareImageHolder>
@@ -131,12 +144,12 @@ const AboutPage = ({ data }: IProps) => {
           title="About us"
           description="Learn more about Hackademics and our events."
         />
-        {data.allContentfulAboutPageItem.edges.map(item => (
+        {data.allContentfulAboutPageItem.edges.map((item, i) => (
           <AboutSection
             title={item.node.title}
             titleColor={item.node.titleColor}
             description={item.node.description}
-            order={item.node.order}
+            index={i}
             image={item.node.image}
           />
         ))}
