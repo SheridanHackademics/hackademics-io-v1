@@ -437,8 +437,8 @@ const PodcastsContainer = styled.div`
 
 const PodcastPage = ({ data }: IProps) => {
     const { nodes } = data.allFeedHackademicsPodcast;
-    const latest = nodes[nodes.length - 1];
-    let podcasts = nodes.slice(0, nodes.length - 1).reverse();
+    const latest = nodes[0];
+    let podcasts = nodes.slice(1, nodes.length);
     return (
         <DefaultLayout>
             <SEO title="Podcast" />
