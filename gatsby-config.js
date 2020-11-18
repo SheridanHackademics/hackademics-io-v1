@@ -18,14 +18,9 @@ module.exports = {
         footer: true,
       },
       {
-        name: "Sponsorship",
-        slug: "/sponsor",
-        footer: true,
-      },
-      {
         name: "Podcast",
         slug: "/podcast",
-        footer: false,
+        footer: true,
       },
       {
         name: "Hackville",
@@ -35,8 +30,13 @@ module.exports = {
       {
         name: "Contact",
         slug: "mailto:sheridanhackademics@gmail.com",
-        footer: true,
+        footer: false,
       },
+      // {
+      //   name: "Sponsorship",
+      //   slug: "/sponsor",
+      //   footer: true,
+      // },
     ]
   },
   plugins: [
