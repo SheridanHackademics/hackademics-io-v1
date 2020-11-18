@@ -12,7 +12,7 @@ const LogoWrap = styled.div`
     flex: 0 1 25px;
   }
 
-  @media (max-width: 788px) {
+    @media (max-width: ${props => props.theme.breakpoints.mobile}) {
     display: none;
   }
 `

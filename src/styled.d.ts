@@ -8,7 +8,13 @@ interface IPalette {
 declare module 'styled-components' {
     export interface DefaultTheme {
         borderRadius: string,
-
+        breakpoints: {
+            mobile: string,
+            tablet: string,
+        },
+        text: {
+            font: string,
+        },
         palette: {
             common: {
                 white: string,
@@ -18,6 +24,7 @@ declare module 'styled-components' {
             uncommon: {
                 lightBlack: string,
                 brightBlack: string,
+                offWhite: string,
             }
             primary: {
                 red: string,
@@ -30,4 +37,9 @@ declare module 'styled-components' {
             }
         }
     }
+}
+
+declare module "*.svg" {
+    const content: string;
+    export default content;
 }
