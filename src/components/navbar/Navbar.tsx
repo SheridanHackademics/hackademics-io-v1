@@ -14,15 +14,14 @@ const Navigation = styled.nav`
   z-index: 2;
   align-self: center;
   border: none;
-  height: 173px;
-  box-sizing: border-box;
+  height: 4.5vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  padding: 70px;
+  padding: 60px 140px 40px;
 
-  @media (max-width: 1100px) {
+  @media (max-width: 1256px) {
     padding: 25px;
     top: 0;
     left: 0;
@@ -36,7 +35,7 @@ const Toggle = styled.div`
   height: 100%;
   cursor: pointer;
 
-  @media (max-width: 1100px) {
+  @media (max-width: 1256px) {
     display: flex;
   }
 `
@@ -47,7 +46,7 @@ const Navbox = styled.div<IProps>`
   justify-content: flex-end;
   align-items: left;
 
-  @media (max-width: 1100px) {
+  @media (max-width: 1256px) {
     flex-direction: column;
     position: fixed;
     width: 100%;
@@ -55,13 +54,13 @@ const Navbox = styled.div<IProps>`
     padding-top: 1rem;
     background-color: ${props => props.theme.palette.common.white};
     transition: all 0.3s ease-in;
-    top: 5.5rem;
+    top: 5.3rem;
     left: ${props => (props.open ? "0" : "-100%")};
   }
 `
 
 const Hamburger = styled.div<IProps>`
-  background-color: ${props => props.theme.palette.common.white};
+  background-color: ${props => props.theme.palette.uncommon.offWhite};
   width: 30px;
   height: 3px;
   transition: all 0.3s linear;
@@ -74,7 +73,7 @@ const Hamburger = styled.div<IProps>`
   ::after {
     width: 30px;
     height: 3px;
-    background-color: ${props => props.theme.palette.common.white};
+    background-color: ${props => props.theme.palette.uncommon.offWhite};
     content: "";
     position: absolute;
     transition: all 0.3s linear;
@@ -93,17 +92,54 @@ const Hamburger = styled.div<IProps>`
   }
 `
 
-const Navbar = ({ siteTitle, menuLinks }) => {
+const HamburgerDark = styled.div<IProps>`
+  background-color: ${props => props.theme.palette.common.black};
+  width: 30px;
+  height: 3px;
+  transition: all 0.3s linear;
+  align-self: center;
+  justify-self: flex-end;
+  position: relative;
+  transform: ${props => (props.open ? "rotate(-45deg)" : "inherit")};
+
+  ::before,
+  ::after {
+    width: 30px;
+    height: 3px;
+    background-color: ${props => props.theme.palette.common.black};
+    content: "";
+    position: absolute;
+    transition: all 0.3s linear;
+  }
+
+  ::before {
+    transform: ${props =>
+    props.open ? "rotate(-90deg) translate(-10px, 0px)" : "rotate(0deg)"};
+    top: -10px;
+  }
+
+  ::after {
+    opacity: ${props => (props.open ? "0" : "1")};
+    transform: ${props => (props.open ? "rotate(90deg) " : "rotate(0deg)")};
+    top: 10px;
+  }
+`
+
+const Navbar = ({ menuLinks, useDark = false }) => {
   const [navbarOpen, setNavbarOpen] = useState(false)
 
   return (
     <Navigation>
-      <NavbarLogo />
+      <NavbarLogo useDark={useDark} />
       <Toggle onClick={() => setNavbarOpen(!navbarOpen)}>
-        <Hamburger open={navbarOpen} />
+        {useDark ? (
+          <HamburgerDark open={navbarOpen} />
+        ) : (
+          <Hamburger open={navbarOpen} />
+        )}
       </Toggle>
       <Navbox open={navbarOpen}>
-        <NavbarLinks menuLinks={menuLinks} />
+        <NavbarLinks useDark={useDark} menuLinks={menuLinks} />
       </Navbox>
     </Navigation>
   )

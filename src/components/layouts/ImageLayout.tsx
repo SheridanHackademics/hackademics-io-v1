@@ -1,25 +1,19 @@
 import React from "react"
+import BackgroundSection from "../BackgroundSection"
 import { ThemeProvider } from "styled-components"
 import { defaultTheme } from "../../themes/theme"
 
 import "./layout.css"
-import SEO from "../seo"
 
-interface IProps {
-  title: string,
-  children: React.ReactNode,
-}
-
-const Layout = ({ title, children }: IProps) => {
-  const theme = defaultTheme;
+const ImageLayout = ({ children, image }) => {
+  const theme = defaultTheme
   return (
     <main>
-      <SEO title={title} />
       <ThemeProvider theme={theme}>
-        {children}
+        <BackgroundSection image={image}>{children}</BackgroundSection>
       </ThemeProvider>
     </main>
   )
 }
 
-export default Layout
+export default ImageLayout

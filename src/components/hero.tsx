@@ -4,7 +4,7 @@ import Divider from "./divider";
 
 const HeroContainer = styled.div`
     text-align: center;
-    width: 100%; 
+    max-width: 100vw; 
 `;
 
 const PageTitle = styled.h1`

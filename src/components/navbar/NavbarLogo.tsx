@@ -9,21 +9,28 @@ const LogoWrap = styled.div`
   min-width: 205px;
   margin-top: -4px;
 
-  @media (max-width: 1100px) and (orientation: landscape) {
+  @media (max-width: 1256px) and (orientation: landscape) {
     flex: 0 1 25px;
   }
 
-  @media (max-width: 1100px) {
+  @media (max-width: 1256px) {
     margin-top: 5.5px;
   }
 `
-const NavbarLogo = () => {
+const NavbarLogo = ({useDark}) => {
   const data = useStaticQuery(graphql`
     query {
-      file(name: { eq: "hackademics-logo-tmpB" }, extension: { eq: "png" }) {
+      logoLight: file(name: { eq: "hackademics-logo-tmp" }, extension: { eq: "png" }) {
         childImageSharp {
           fluid(pngQuality: 100) {
-            ...GatsbyImageSharpFluid
+            ...GatsbyImageSharpFluid_tracedSVG
+          }
+        }
+      }
+      logoDark: file(name: { eq: "hackademics-logo-tmpB" }, extension: { eq: "png" }) {
+        childImageSharp {
+          fluid(pngQuality: 100) {
+            ...GatsbyImageSharpFluid_tracedSVG
           }
         }
       }
@@ -32,7 +39,7 @@ const NavbarLogo = () => {
 
   return (
     <LogoWrap as={Link} to="/">
-      <Img fluid={data.file.childImageSharp.fluid} alt="logo" />
+      <Img fluid={useDark ? data.logoDark.childImageSharp.fluid : data.logoLight.childImageSharp.fluid} alt="logo" />
     </LogoWrap>
   )
 }

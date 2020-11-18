@@ -3,7 +3,7 @@ import { DefaultTheme } from "styled-components";
 export type PrimaryColor = "red"
     | "blue"
     | "yellow"
-    | "green"
+    | "green";
 
 export const defaultTheme: DefaultTheme = {
     borderRadius: '4px',
@@ -16,6 +16,7 @@ export const defaultTheme: DefaultTheme = {
         uncommon: {
             lightBlack: '#181818',
             brightBlack: '#212121',
+            offWhite: '#F7F7FF',
         },
         primary: {
             red: '#EC4564',
