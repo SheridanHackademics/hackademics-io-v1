@@ -7,11 +7,10 @@ import Img, { FluidObject } from "gatsby-image"
 import Hero from "../components/hero";
 import Container from "../components/container";
 import styled from "styled-components";
-import { PrimaryColor } from "../themes/theme";
+import SEO from "../components/seo";
 
 import * as Pause from "../assets/pause.svg";
 import * as Play from "../assets/play.svg";
-import SEO from "../components/seo";
 
 interface IChildImageSharp {
     childImageSharp: {
@@ -323,7 +322,7 @@ const Content = ({ content, seekTo }: { content: string, seekTo: (time: number) 
                     </>
             }
         </ExtraContent>
-    </ContentContainer>
+    </ContentContainer >
 }
 
 const PodcastImg = styled.img`
