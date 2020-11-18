@@ -7,6 +7,14 @@ export type PrimaryColor = "red"
 
 export const defaultTheme: DefaultTheme = {
     borderRadius: '4px',
+    breakpoints: {
+        mobile: '767px',
+        tablet: '1080px',
+        desktop: '1256px'
+    },
+    text: {
+        font: "'Open Sans', sans-serif"
+    },
     palette: {
         common: {
             white: '#FFFFFF',
@@ -29,3 +37,4 @@ export const defaultTheme: DefaultTheme = {
         }
     }
 }
+

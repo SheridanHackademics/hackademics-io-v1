@@ -18,25 +18,25 @@ module.exports = {
         footer: true,
       },
       {
-        name: "Sponsorship",
-        slug: "/sponsor",
-        footer: true,
-      },
-      {
         name: "Podcast",
         slug: "/podcast",
-        footer: false,
+        footer: true,
       },
       {
         name: "Hackville",
         slug: "https://hackville.io",
-        footer: false,
+        footer: true,
       },
       {
         name: "Contact",
         slug: "mailto:sheridanhackademics@gmail.com",
         footer: true,
       },
+      // {
+      //   name: "Sponsorship",
+      //   slug: "/sponsor",
+      //   footer: true,
+      // },
     ]
   },
   plugins: [

@@ -11,7 +11,7 @@ const FooterHolder = styled.footer`
   display: flex;
   height: 30vh;
   background-color: #212121;
-  bottom: 0px;
+  bottom: 0px; 
   padding: 0px 7.9vh;
   justify-content: space-between;
 `
@@ -21,8 +21,10 @@ const FooterEnd = styled.div`
   width: 50%;
   padding: 7.2vh 0px;
 
-  @media (max-width: 788px) {
+  @media (max-width: ${props => props.theme.breakpoints.tablet}) {
     width: 100%;
+    display: flex;
+    justify-content: space-around; 
   }
 `
 
@@ -31,8 +33,13 @@ const Links = styled.div`
   text-transform: uppercase;
   padding-right: 30%;
 
-  @media (max-width: 788px) {
+  @media (max-width: ${props => props.theme.breakpoints.mobile}) {
     display: none;
+  }
+
+  @media (max-width: ${props => props.theme.breakpoints.tablet}) {
+    padding-left: 10%;
+    padding-right: 0%;
   }
 `
 
@@ -40,14 +47,14 @@ const Social = styled.div`
   text-align: left;
   text-transform: uppercase;
 
-  @media (max-width: 788px) {
+  @media (max-width: ${props => props.theme.breakpoints.mobile}) {
     width: 100%;
   }
 `
 
 const FooterLink = styled(Link)`
   display: block;
-  color: #ffffff;
+  color: ${props => props.theme.palette.common.white};
   text-decoration: none;
   line-height: 35px;
   letter-spacing: 1.8px;
@@ -61,17 +68,26 @@ const FooterLink = styled(Link)`
 
 const SocialHeader = styled.h3`
   display: block;
-  color: #ffffff;
+  color: ${props => props.theme.palette.common.white};
   text-decoration: none;
   line-height: 45px;
   font-size: 15px;
   font-weight: 500;
   letter-spacing: 1.8px;
+
+  @media (max-width: ${props => props.theme.breakpoints.tablet}) {
+    margin-bottom: 2vh;
+  }
 `
 
 const SocialLink = styled.a`
   text-decoration: none;
   margin-right: 32px;
+
+  @media (max-width: ${props => props.theme.breakpoints.tablet}) {
+    margin: 0px;
+    padding: 11.5px
+  }
 `
 
 const Footer = ({ menuLinks }) => (

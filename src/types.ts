@@ -13,3 +13,14 @@ export interface IChildImageSharp {
         fluid: FluidObject,
     }
 }
+
+export interface ISiteMetaData {
+    title: string,
+    menuLinks: IMenuLink,
+}
+
+export interface IMenuLink {
+    name: string,
+    slug: string,
+    footer: boolean,
+}

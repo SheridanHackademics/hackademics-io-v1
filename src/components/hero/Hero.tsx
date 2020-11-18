@@ -10,17 +10,28 @@ const HeroHolder = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+
+  @media (max-width: ${props => props.theme.breakpoints.mobile}) {
+    margin: 0vh;
+    padding: 10vh 0vh;
+    height: 100%;
+    box-sizing: border-box;
+  }
 `
 
 const HeroSubtitle = styled.span`
   flex-basis: 100%;
   margin-top: 55px;
   font-weight: 700;
-  font-size: 45px;
+  font-size: 2.813em;
   letter-spacing: 4.5px;
   display: block;
   text-align: center;
   text-transform: uppercase;
+
+  @media (max-width: ${props => props.theme.breakpoints.mobile}) {
+    font-size: 2em;
+  }
 `
 
 const HeroButton = styled.button`
@@ -30,7 +41,7 @@ const HeroButton = styled.button`
   padding-right: 70px;
   padding-top: 25px;
   padding-bottom: 25px;
-  color: #ffffff;
+  color: ${props => props.theme.palette.common.white};
   background-color: #2662dd;
   font-size: 1.75rem;
   font-weight: 700;
@@ -43,8 +54,12 @@ const HeroButton = styled.button`
   text-decoration: none;
 
   :hover {
-    background-color: #ffffff;
+    background-color: ${props => props.theme.palette.common.white};
     color: #2662dd;
+  }
+
+  @media (max-width: ${props => props.theme.breakpoints.mobile}) {
+    margin: 5vw;
   }
 `
 

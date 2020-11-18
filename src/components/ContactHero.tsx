@@ -5,18 +5,18 @@ const Holder = styled.div`
   text-align: center;
   padding: 40vh 20vw;
 
-  @media (max-width: 788px) {
-    padding: 0 20vw 40vh;
+  @media (max-width: ${props => props.theme.breakpoints.mobile}) {
+    padding: 20vh 2rem;
   }
 `
 
 const Title = styled.h1`
   font-size: 3rem;
   font-weight: 800;
-  color: #181818;
+  color: ${props => props.theme.palette.uncommon.lightBlack};
   margin-bottom: 55px;
 
-  @media (max-width: 788px) {
+    @media (max-width: ${props => props.theme.breakpoints.mobile}) {
     font-size: 2.5rem;
   }
 `
@@ -25,9 +25,9 @@ const Button = styled.button`
   padding: 20px 60px;
   color: ${props => props.theme.palette.common.white};
   background-color: ${props => props.theme.palette.primary.green};
-  font-size: 1.75rem;
+  font-size: 1.5em;
   font-weight: 500;
-  letter-spacing: 2.8px;
+  letter-spacing: 2.6px;
   border: none;
   transition: all 0.3s ease 0s;
   text-transform: uppercase;
@@ -35,8 +35,8 @@ const Button = styled.button`
   cursor: pointer;
   text-decoration: none;
 
-  @media (max-width: 788px) {
-    font-size: 1rem;
+  @media (max-width: ${props => props.theme.breakpoints.mobile}) {
+    width: 100%;
   }
 `
 
