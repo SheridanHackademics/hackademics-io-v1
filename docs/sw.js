@@ -27,17 +27,17 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-e4f0179eeac3064cf13e.js"
+    "url": "webpack-runtime-3bdbf5025f2ade8e0e03.js"
   },
   {
     "url": "framework-de237a875aa45b276a9d.js"
   },
   {
-    "url": "app-52960efefb2d118fe75d.js"
+    "url": "app-2d156dcf1c429b031763.js"
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "4b600b9d566ce2f8a034ace09c361627"
+    "revision": "3f9291cac43b1b8d4f94b65c24065cbc"
   },
   {
     "url": "component---cache-caches-gatsby-plugin-offline-app-shell-js-b0556ce5127c1a3e2490.js"
@@ -48,14 +48,14 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/app-data.json",
-    "revision": "b63ada27b6b6518f889bdec0ab63f859"
+    "revision": "07a519d97bbbb797467fb88c49c2dcc9"
   },
   {
     "url": "polyfill-8f27f34e33d6936c0c6c.js"
   },
   {
     "url": "manifest.webmanifest",
-    "revision": "6471209482e855cde30848248f0b0a33"
+    "revision": "ea4491c9fcee172e08a8442631f8944d"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
@@ -142,12 +142,12 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   lastNavigationRequest = event.request.url
 
   let { pathname } = new URL(event.request.url)
-  pathname = pathname.replace(new RegExp(`^/hackademics.io.v1`), ``)
+  pathname = pathname.replace(new RegExp(`^/hackademics-io-v1`), ``)
 
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/hackademics.io.v1/app-52960efefb2d118fe75d.js`))) {
+  if (!resources || !(await caches.match(`/hackademics-io-v1/app-2d156dcf1c429b031763.js`))) {
     return await fetch(event.request)
   }
 
@@ -160,7 +160,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
     }
   }
 
-  const offlineShell = `/hackademics.io.v1/offline-plugin-app-shell-fallback/index.html`
+  const offlineShell = `/hackademics-io-v1/offline-plugin-app-shell-fallback/index.html`
   const offlineShellWithKey = workbox.precaching.getCacheKeyForURL(offlineShell)
   return await caches.match(offlineShellWithKey)
 })
