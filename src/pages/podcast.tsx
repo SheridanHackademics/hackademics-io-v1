@@ -1,7 +1,7 @@
 import { graphql } from "gatsby";
-import React, { AudioHTMLAttributes, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Footer from "../components/footer/Footer";
-import Layout from "../components/layout/layout";
+import { DefaultLayout } from "../components/layouts"
 import Navbar from "../components/navbar/Navbar";
 import Img, { FluidObject } from "gatsby-image"
 import Hero from "../components/hero";
@@ -11,6 +11,7 @@ import { PrimaryColor } from "../themes/theme";
 
 import * as Pause from "../assets/pause.svg";
 import * as Play from "../assets/play.svg";
+import SEO from "../components/seo";
 
 interface IChildImageSharp {
     childImageSharp: {
@@ -62,6 +63,7 @@ interface IProps {
                 menuLinks: {
                     name: string,
                     slug: string,
+                    footer: boolean,
                 }[]
             }
         },
@@ -219,6 +221,10 @@ const Audio = ({ src, seek, children }: IAudio) => {
 const ContentContainer = styled.div`
     padding: 2rem;
     margin-left: 150px;
+
+    @media (max-width: ${props => props.theme.breakpoints.tablet}) {
+        margin-left: 0rem;
+    }
 `;
 
 const ContentList = styled.ul`
@@ -229,26 +235,53 @@ const ContentParagraph = styled.p`
     margin: 1rem 0rem;
 `;
 
+const ExtraContent = styled.div`
+    @media (max-width: ${props => props.theme.breakpoints.mobile}) {
+        display: none;
+    }
+`;
+
 const Content = ({ content, seekTo }: { content: string, seekTo: (time: number) => void }) => {
+    let [state, setState] = useState(false);
+
+    /**
+     * 
+     * Hi, so you are reading this and you don't know why this is here. I'd love
+     * to give you some helpful context as too why. This data is grabbed from
+     * anchors rss feed from the podcasts we've done.
+     * 
+     * We need to be able to decode the information stored in them, so we try
+     * and parse the html content they return and OMG IS IT HARD.
+     * 
+     * Please just let me (Alec) deal with it. I'll come back and clean it up
+     * after i get the final spec for the podcast player but for now, it's 12:23
+     * On a tuesday night and i want to go to bed.
+     * 
+     * Message me if you hate this too <3
+     */
+
     let timeTest = new RegExp(/^[0-9]*:[0-9][0-9] - /);
     let minuteRegex = new RegExp(/^[0-9]*/);
     let secondRegex = new RegExp(/:[0-9]{2}/);
-    let showLinksTest = new RegExp(/<p><a (.+?)<\/a><\/p>/);
+    let showLinksTest = new RegExp(/(?:<p>)?<a (.+?)<\/a>(?:<\/p>)?/);
     let showUrlRegex = new RegExp(/^href="(.+?)"/);
-    let showTextRegex = new RegExp(/<strong>(.+?)<\/strong>/);
+    let showTextRegex = new RegExp(/^(?:<p>)?(?:<a )?href="(.+?)">(?:<strong>)?(.+?)(?:<\/strong>)?(?:<\/a>)?(?:<\/p>)?$/);
     let splitRegex;
     if (content.startsWith("<p><strong>")) {
-        splitRegex = new RegExp(/<p><strong>(.+?)<\/strong><\/p>\n/);
+        splitRegex = new RegExp(/<p><strong>(.+?)<\/strong><\/p>(\n|<br>)/);
     } else {
-        splitRegex = new RegExp(/<p>(.+?)<\/p>\n/);
+        splitRegex = new RegExp(/<p>(.+?)<\/p>(\n|<br>)/);
     }
-    let b = content.split(splitRegex).filter(s => s.length !== 0).map((s, i) => {
+    let b = content.split(splitRegex).filter(s => s.length !== 0).filter(s => s !== '\n').map((s, i) => {
         if (i === 0) {
             return { type: 'description', content: s };
         } else if (showLinksTest.test(s)) {
-            let meta = s.split(showLinksTest).filter(s => s !== '').filter(s => s !== '\n').map(s => {
-                let url = showUrlRegex.exec(s).pop();
-                let text = showTextRegex.exec(s).pop();
+            let links = s.split(showLinksTest).filter(s => s.startsWith("href"));
+            let meta = links.map(s => {
+                let ex = showTextRegex.exec(s);
+                console.log(ex);
+                let text = ex.pop();
+                let url = ex.pop();
                 return { url, text }
             });
             return { type: 'links', content: s, meta };
@@ -272,28 +305,49 @@ const Content = ({ content, seekTo }: { content: string, seekTo: (time: number) 
     }, { description: "", time: [], links: [], long: "" });
     return <ContentContainer>
         <ContentParagraph>{b.description}</ContentParagraph>
-        <h2>Show Notes</h2>
-        <ContentList>
-            {b.links.map(l => <li key={l.url}><a href={l.url} rel="nofollow">{l.text}</a></li>)}
-        </ContentList>
-        <h2>Time Links</h2>
-        <ContentList>
-            {b.time.map(t => <li key={t.timestamp}><a href="javascript:;" onClick={() => seekTo(t.timestamp)}><Time seconds={t.timestamp} /></a> - {t.text}</li>)}
-        </ContentList>
-        <h2>Long Description</h2>
-        <p>{b.long}</p>
+        <ExtraContent>
+            {
+                (!state) ? <a href="javascript:void(0);" rel="nofollow" onClick={() => setState(!state)}>Read More...</a> :
+                    <>
+                        <h2>Show Notes</h2>
+                        <ContentList>
+                            {b.links.map(l => <li key={l.url}><a href={l.url} rel="nofollow">{l.text}</a></li>)}
+                        </ContentList>
+                        <h2>Time Links</h2>
+                        <ContentList>
+                            {b.time.map(t => <li key={t.timestamp}><a href="javascript:;" onClick={() => seekTo(t.timestamp)}><Time seconds={t.timestamp} /></a> - {t.text}</li>)}
+                        </ContentList>
+                        <h2>Long Description</h2>
+                        <p>{b.long}</p>
+                        <a href="javascript:void(0);" rel="nofollow" onClick={() => setState(!state)}>Collapse...</a>
+                    </>
+            }
+        </ExtraContent>
     </ContentContainer>
 }
 
 const PodcastImg = styled.img`
     width: 150px;
     height: 150px;
+
+    @media (max-width: ${props => props.theme.breakpoints.mobile}) {
+        margin: auto;
+    }
 `;
 
 const PodcastContainer = styled.div`
     width: 100%;
+    box-sizing: border-box;
+    padding: 1rem;
+    border-radius: 15px;
+    border: 1px solid black;
     display: flex;
     flex-direction: column;
+
+    @media (max-width: ${props => props.theme.breakpoints.mobile}) {
+        padding: 0rem;
+        border: none;
+    }
 `;
 
 const PodcastPlayer = styled.div`
@@ -308,12 +362,20 @@ const PodcastTitle = styled.h2`
     font-family: "Open Sans", sans-serif;
     font-weight: bold;
     padding-left: 1rem;
+
+    @media (max-width: ${props => props.theme.breakpoints.tablet}) {
+        font-size: 1.15em
+    }
 `;
 
 const PodcastSubTitle = styled.h4`
     font-family: "Open Sans", sans-serif;
     font-weight: 300;
     padding-left: 1rem;
+
+    @media (max-width: ${props => props.theme.breakpoints.tablet}) {
+        font-size: 1em
+    }
 `;
 
 const PodcastHeader = styled.div`
@@ -324,6 +386,10 @@ const PodcastHeader = styled.div`
 const Flex = styled.div`
     width: 100%;
     display: flex;
+
+    @media (max-width: ${props => props.theme.breakpoints.mobile}) {
+        flex-direction: column;
+    }
 `;
 
 const Podcast = ({ title, imageSrc, pubDate, enclosure, content }: any) => {
@@ -372,15 +438,12 @@ const PodcastsContainer = styled.div`
 
 const PodcastPage = ({ data }: IProps) => {
     const { nodes } = data.allFeedHackademicsPodcast;
-    let podcasts = nodes.reverse();
-    const latest = podcasts[podcasts.length - 1];
-    podcasts = podcasts.slice(0, podcasts.length - 2);
+    const latest = nodes[nodes.length - 1];
+    let podcasts = nodes.slice(0, nodes.length - 1).reverse();
     return (
-        <Layout title='about'>
-            <Navbar
-                siteTitle={data.site.siteMetadata.title}
-                menuLinks={data.site.siteMetadata.menuLinks}
-            />
+        <DefaultLayout>
+            <SEO title="Podcast" />
+            <Navbar useDark={true} menuLinks={data.site.siteMetadata.menuLinks} />
             <Img fluid={data.header.childImageSharp.fluid} alt="header" />
             <Container>
                 <Hero title={data.pagesJson.title} description={data.pagesJson.description} />
@@ -395,8 +458,8 @@ const PodcastPage = ({ data }: IProps) => {
                     </PodcastsContainer>
                 </Section>
             </Container>
-            <Footer />
-        </Layout>
+            <Footer menuLinks={data.site.siteMetadata.menuLinks} />
+        </DefaultLayout>
     )
 }
 
@@ -408,6 +471,7 @@ query PodcastPage {
         menuLinks {
           name
           slug
+          footer
         }
       }
     }
