@@ -25,12 +25,12 @@ module.exports = {
       {
         name: "Hackville",
         slug: "https://hackville.io",
-        footer: false,
+        footer: true,
       },
       {
         name: "Contact",
         slug: "mailto:sheridanhackademics@gmail.com",
-        footer: false,
+        footer: true,
       },
       // {
       //   name: "Sponsorship",
