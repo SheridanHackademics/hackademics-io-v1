@@ -3,9 +3,6 @@ require('dotenv').config({
 })
 
 module.exports = {
-  // used for github pages
-  pathPrefix: "/hackademics-io-v1",
-  // used for github pages
   siteMetadata: {
     title: `Hackademics`,
     description: `Homepage for the Sheridan Hackademics club`,
@@ -88,12 +85,12 @@ module.exports = {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `Hackademics Website`,
-        short_name: `hackademics.io`,
+        short_name: `www.hackademics.club`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#ffffff`,
+        theme_color: `#EC4564`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/favicon.png`, // This path is relative to the root of the site.
       },
     },
     {
