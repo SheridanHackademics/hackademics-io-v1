@@ -8,7 +8,7 @@ const HeroContainer = styled.div`
 `;
 
 const PageTitle = styled.h1`
-    font-family: "Open Sans", sans-serif;
+    font-family: ${props => props.theme.text.font};
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 5.5px;
@@ -16,7 +16,7 @@ const PageTitle = styled.h1`
 `;
 
 const PageSubTitle = styled.h3`
-    font-family: "Open Sans", sans-serif;
+    font-family: ${props => props.theme.text.font};
     font-weight: 300;
     font-size: 2.1em;
     margin: 2rem 0px;

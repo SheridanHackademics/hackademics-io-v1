@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import NavbarLinks from "./NavbarLinks"
 import styled from "styled-components"
 import NavbarLogo from "./NavbarLogo"
+import { IMenuLink, ISiteMetaData } from "../../types"
 
 interface IProps {
   open?: boolean,
@@ -21,7 +22,7 @@ const Navigation = styled.nav`
 
   padding: 60px 140px 40px;
 
-  @media (max-width: 1256px) {
+  @media (max-width: ${props => props.theme.breakpoints.desktop}) {
     padding: 25px;
     top: 0;
     left: 0;
@@ -35,7 +36,7 @@ const Toggle = styled.div`
   height: 100%;
   cursor: pointer;
 
-  @media (max-width: 1256px) {
+  @media (max-width: ${props => props.theme.breakpoints.desktop}) {
     display: flex;
   }
 `
@@ -46,16 +47,17 @@ const Navbox = styled.div<IProps>`
   justify-content: flex-end;
   align-items: left;
 
-  @media (max-width: 1256px) {
+  @media (max-width: ${props => props.theme.breakpoints.desktop}) {
     flex-direction: column;
     position: fixed;
     width: 100%;
     justify-content: flex-start;
     padding-top: 1rem;
-    background-color: ${props => props.theme.palette.common.white};
+    background-color: ${props => props.theme.palette.common.white};;
     transition: all 0.3s ease-in;
     top: 5.3rem;
     left: ${props => (props.open ? "0" : "-100%")};
+    z-index: 100;
   }
 `
 
@@ -125,7 +127,12 @@ const HamburgerDark = styled.div<IProps>`
   }
 `
 
-const Navbar = ({ menuLinks, useDark = false }) => {
+interface INavbar {
+  useDark?: boolean;
+  menuLinks: IMenuLink[],
+}
+
+const Navbar = ({ menuLinks, useDark = false }: INavbar) => {
   const [navbarOpen, setNavbarOpen] = useState(false)
 
   return (
@@ -135,8 +142,8 @@ const Navbar = ({ menuLinks, useDark = false }) => {
         {useDark ? (
           <HamburgerDark open={navbarOpen} />
         ) : (
-          <Hamburger open={navbarOpen} />
-        )}
+            <Hamburger open={navbarOpen} />
+          )}
       </Toggle>
       <Navbox open={navbarOpen}>
         <NavbarLinks useDark={useDark} menuLinks={menuLinks} />
