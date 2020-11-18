@@ -3,6 +3,9 @@ require('dotenv').config({
 })
 
 module.exports = {
+  // used for github pages
+  pathPrefix: "/hackademics.io.v1",
+  // used for github pages
   siteMetadata: {
     title: `Hackademics`,
     description: `Homepage for the Sheridan Hackademics club`,

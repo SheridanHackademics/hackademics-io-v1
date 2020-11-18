@@ -158,7 +158,7 @@ const ExecutiveSection = ({ teamName, team_member: members }: ITeam) => (
         </SectionContent>
         <SquareImage>
           <Img
-            alt={`${name}, ${teamName}`}
+            alt={a.fullName}
             fluid={a.photo.fluid}
             imgStyle={{ objectFit: "cover" }}
           />
