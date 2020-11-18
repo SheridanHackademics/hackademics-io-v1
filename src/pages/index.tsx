@@ -8,18 +8,14 @@ import { ImageLayout, LandingLayout } from "../components/layouts"
 import Navbar from "../components/navbar/Navbar"
 import ContactHero from "../components/ContactHero"
 import styled from "styled-components"
-import { Edges, IChildImageSharp, Node } from "../types"
+import { Edges, IChildImageSharp, IMenuLink, Node } from "../types"
 
 interface IProps {
   data: {
     site: {
       siteMetadata: {
         title: string
-        menuLinks: {
-          name: string
-          slug: string
-          footer: boolean
-        }[]
+        menuLinks: IMenuLink[]
       }
     }
     bg: IChildImageSharp
@@ -51,10 +47,13 @@ const LandingItemContent = styled.div<{ direction: boolean }>`
   padding-left: ${props => (props.direction ? "15.73vw" : "0")};
   padding-right: ${props => (props.direction ? "0" : "15.73vw")};
 
-  @media (max-width: 788px) {
+  @media (max-width: ${props => props.theme.breakpoints.mobile}) {
     flex-flow: row wrap;
-    padding-left: ${props => (props.direction ? "5vw" : "0")};
-    padding-right: ${props => (props.direction ? "0" : "5vw")};
+    padding: 5vw;
+  }
+
+  @media (max-width: ${props => props.theme.breakpoints.tablet}) {
+    height: 700px;
   }
 `
 
@@ -68,6 +67,10 @@ const SmallHeader = styled.h2`
   color: ${props => props.theme.palette.common.black};
   font-weight: 800;
   margin-bottom: 16px;
+
+  @media (max-width: ${props => props.theme.breakpoints.mobile}) {
+    text-align: center;
+  }
 `
 
 const SmallContent = styled.p`
@@ -76,15 +79,16 @@ const SmallContent = styled.p`
   color: ${props => props.theme.palette.common.black};
   max-width: 540px;
   margin-bottom: 16px;
+
+  @media (max-width: ${props => props.theme.breakpoints.mobile}) {
+    text-align: left;
+  }
 `
 
 const LandingButton = styled.button`
-  padding-left: 60px;
-  padding-right: 60px;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  color: ${props => props.theme.palette.common.white};
-  font-size: 25px;
+  padding: 20px 60px;
+  color: ${props => props.theme.palette.common.white};;
+  font-size: 1.5em;
   font-weight: 500;
   letter-spacing: 2.6px;
   border: none;
@@ -93,11 +97,19 @@ const LandingButton = styled.button`
   outline: none;
   cursor: pointer;
   text-decoration: none;
+
+  @media (max-width: ${props => props.theme.breakpoints.mobile}) {
+    width: 100%;
+  }
 `
 
 const ImgWrap = styled.div`
   width: 730px;
   height: 1080px;
+
+  @media (max-width: ${props => props.theme.breakpoints.mobile}) {
+    display: none;
+  }
 `
 
 interface LandingItemProps {
@@ -140,6 +152,7 @@ const IndexPage = ({ data }: IProps) => {
       <LandingLayout>
         {data.allContentfulLandingPageItem.edges.map((item, i) => (
           <LandingItem
+            key={item.node.title}
             index={i}
             title={item.node.title}
             description={item.node.description.description}
@@ -150,8 +163,8 @@ const IndexPage = ({ data }: IProps) => {
           />
         ))}
         <ContactHero title="Have more questions? Reach out to us!" />
+        <Footer menuLinks={data.site.siteMetadata.menuLinks} />
       </LandingLayout>
-      <Footer menuLinks={data.site.siteMetadata.menuLinks} />
     </>
   )
 }
