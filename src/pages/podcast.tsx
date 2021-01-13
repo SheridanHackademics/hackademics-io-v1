@@ -310,14 +310,14 @@ const Content = ({ content, seekTo }: { content: string, seekTo: (time: number) 
                     <>
                         <h2>Show Notes</h2>
                         <ContentList>
-                            {b.links.map(l => <li key={l.url}><a href={l.url} rel="nofollow">{l.text}</a></li>)}
+                            {b.links.map(l => <li key={l.url}><a href={l.url} rel="nofollow">{l.text.replace(/<\/?[^>]+(>|$)/g, "")}</a></li>)}
                         </ContentList>
                         <h2>Time Links</h2>
                         <ContentList>
-                            {b.time.map(t => <li key={t.timestamp}><a href="javascript:;" onClick={() => seekTo(t.timestamp)}><Time seconds={t.timestamp} /></a> - {t.text}</li>)}
+                            {b.time.map(t => <li key={t.timestamp}><a href="javascript:;" onClick={() => seekTo(t.timestamp)}><Time seconds={t.timestamp} /></a> - {t.text.replace(/<\/?[^>]+(>|$)/g, "")}</li>)}
                         </ContentList>
                         <h2>Long Description</h2>
-                        <p>{b.long}</p>
+                        <p>{b.long.replace(/<\/?[^>]+(>|$)/g, "")}</p>
                         <a href="javascript:void(0);" rel="nofollow" onClick={() => setState(!state)}>Collapse...</a>
                     </>
             }
@@ -425,7 +425,7 @@ const SectionHeader = styled.h1`
 `;
 
 const Section = styled.section`
-    margin: 8rem 0rem 12rem;
+    margin: 6rem 0rem 8rem;
     width: 100%;
 `;
 
@@ -433,6 +433,30 @@ const PodcastsContainer = styled.div`
     display: grid;
     grid-template-columns: 1fr;
     grid-row-gap: 4rem;
+`;
+
+const List = styled.ul`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    list-style-type: none;
+`;
+
+const Item = styled.li`
+    padding: 1rem;
+`;
+
+const Link = styled.div` 
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+`;
+
+const ImageLogo = styled.img`
+    width: 64px;
+    height: 64px;
 `;
 
 const PodcastPage = ({ data }: IProps) => {
@@ -446,6 +470,67 @@ const PodcastPage = ({ data }: IProps) => {
             <Img fluid={data.header.childImageSharp.fluid} alt="header" />
             <Container>
                 <Hero title={data.pagesJson.title} description={data.pagesJson.description} />
+                <Section>
+                    <SectionHeader>Listen to our podcast on your favorite platform</SectionHeader>
+                    <List>
+                        <Item>
+                            <a target="_blank" rel="nofollow" href="https://open.spotify.com/show/7c5I7T5vKH4TanlNTVVTkB">
+                                <Link>
+                                    <ImageLogo src="/podcasts/spotify.png" alt="spotify logo" />
+                                    <div>Spotify</div>
+                                </Link>
+                            </a>
+                        </Item>
+                        <Item>
+                            <a target="_blank" rel="nofollow" href="https://podcasts.apple.com/ca/podcast/the-hackademics-podcast/id1536146311">
+                                <Link>
+                                    <ImageLogo src="/podcasts/apple.png" alt="apply podcasts logo" />
+                                    <div>Apple Podcast</div>
+                                </Link>
+                            </a>
+                        </Item>
+                        <Item>
+                            <a target="_blank" rel="nofollow" href="https://www.breaker.audio/the-hackademics-podcast">
+                                <Link>
+                                    <ImageLogo src="/podcasts/breaker.png" alt="breaker logo" />
+                                    <div>Breaker</div>
+                                </Link>
+                            </a>
+                        </Item>
+                        <Item>
+                            <a target="_blank" rel="nofollow" href="https://www.google.com/podcasts?feed=aHR0cHM6Ly9hbmNob3IuZm0vcy8zNWY4OTFjYy9wb2RjYXN0L3Jzcw==">
+                                <Link>
+                                    <ImageLogo src="/podcasts/google.png" alt="google podcast logo" />
+                                    <div>Google Podcast</div>
+                                </Link>
+                            </a>
+                        </Item>
+                        <Item>
+                            <a target="_blank" rel="nofollow" href="https://pca.st/ci46c18k">
+                                <Link>
+                                    <ImageLogo src="/podcasts/pocketcasts.png" alt="Pocket Cast logo" />
+                                    <div>Pocket Cast</div>
+                                </Link>
+                            </a>
+                        </Item>
+                        <Item>
+                            <a target="_blank" rel="nofollow" href="https://radiopublic.com/the-hackademics-podcast-WPKYdw">
+                                <Link>
+                                    <ImageLogo src="/podcasts/radiopublic.png" alt="Radio public logo" />
+                                    <div>Radio Public</div>
+                                </Link>
+                            </a>
+                        </Item>
+                        <Item>
+                            <a target="_blank" rel="nofollow" href="https://anchor.fm/hackademics">
+                                <Link>
+                                    <ImageLogo src="/podcasts/anchor.png" alt="Anchor logo" />
+                                    <div>Anchor.fm</div>
+                                </Link>
+                            </a>
+                        </Item>
+                    </List>
+                </Section>
                 <Section>
                     <SectionHeader>Our Latest Podcast</SectionHeader>
                     <Podcast imageSrc={latest.itunes.image} title={latest.title} pubDate={latest.isoDate} enclosure={latest.enclosure} content={latest.content} />

@@ -43,7 +43,7 @@ const Button = styled.button`
 const ContactHero = ({ title }) => (
   <Holder>
     <Title>{title}</Title>
-    <a href="/contact" style={{ textDecoration: "none" }}>
+    <a href="mailto:sheridanhackville@gmail.com" style={{ textDecoration: "none" }}>
       <Button>Contact Us</Button>
     </a>
   </Holder>

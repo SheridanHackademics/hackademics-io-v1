@@ -146,7 +146,7 @@ const IndexPage = ({ data }: IProps) => {
     <>
       <ImageLayout image={data.bg.childImageSharp.fluid}>
         <SEO title="Home" />
-        <Navbar useDark={false} menuLinks={data.site.siteMetadata.menuLinks} />
+        <Navbar useDark={true} menuLinks={data.site.siteMetadata.menuLinks} />
         <Hero />
       </ImageLayout>
       <LandingLayout>
